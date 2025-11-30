@@ -1,0 +1,4 @@
+cplex/lib/libcplex.a
+cplex/lib/libcplex.so
+cplex/lib/libilocplex.a
+cplex/lib/libconcert.a
