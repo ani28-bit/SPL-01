@@ -1,19 +1,20 @@
+
 #ifndef DISTANCEMATRIX_H
 #define DISTANCEMATRIX_H
 
-#include <vector>
 #include "City.h"
 
 class DistanceMatrix {
 private:
 
-    std::vector<std::vector<double>> matrix;
+    double** matrix;
     int numCities;
 
 public:
     
 
-    DistanceMatrix(const std::vector<City>& cities);
+    DistanceMatrix(const City* cities,int n);
+    ~DistanceMatrix();
     
     // get distance between two cities by their indices
 
@@ -25,7 +26,7 @@ public:
     
     // total distance for a tour
 
-    double calculateTourDistance(const std::vector<int>& tour) const;
+    double calculateTourDistance(const int* tour,int tourSize) const;
     
     // print the distance matrix 
 
