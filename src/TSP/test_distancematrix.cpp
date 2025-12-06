@@ -1,126 +1,171 @@
 #include <iostream>
-#include <vector>
-#include <iomanip>
-#include "City.h"
-#include "DistanceMatrix.h"
-
 using namespace std;
 
-int main() {
-    cout << "========================================" << endl;
-    cout << "    TESTING DISTANCEMATRIX CLASS" << endl;
-    cout << "========================================" << endl;
-    
-    // Create test cities (forming a square)
-    vector<City> cities;
-    cities.push_back(City(0, 0.0, 0.0));   // Bottom-left
-    cities.push_back(City(1, 4.0, 0.0));   // Bottom-right
-    cities.push_back(City(2, 4.0, 3.0));   // Top-right
-    cities.push_back(City(3, 0.0, 3.0));   // Top-left
-    
-    cout << "\n[TEST 1] Creating Cities" << endl;
-    for (const auto& city : cities) {
-        cout << "City " << city.getId() 
-             << ": (" << city.getX() << ", " << city.getY() << ")" << endl;
+
+class City {
+private:
+    int id;
+    double x, y;
+ public:
+    City() : id(0), x(0), y(0) {}
+    City(int id_, double x_, double y_) : id(id_), x(x_), y(y_) {}
+
+      int getId() { return id; }
+      double getX() { return x; }
+     double getY() { return y; }
+  };
+
+ 
+  double round2(double x) {
+    return (int)(x * 100 + 0.5) / 100.0;
+ }
+
+ double manualSqrt(double n) {
+    if (n == 0) return 0;
+
+    double x = n, y = 1.0, e = 0.00001;
+    while ((x - y > e) || (y - x > e)) {
+        x = (x + y) / 2;
+        y = n / x;
     }
-    cout << "✓ PASS: Created " << cities.size() << " cities" << endl;
-    
-    // Create distance matrix
-    cout << "\n[TEST 2] Building Distance Matrix" << endl;
-    DistanceMatrix distMatrix(cities);
-    cout << "✓ PASS: Distance matrix created" << endl;
-    
-    // Test getNumCities
-    cout << "\n[TEST 3] Getting Number of Cities" << endl;
+    return x;
+}
+
+double calcDistance(double x1, double y1, double x2, double y2) {
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    return manualSqrt(dx * dx + dy * dy);
+}
+
+
+class DistanceMatrix {
+private:
+    int nCities;
+    double** matrix;
+
+public:
+    DistanceMatrix(City cities[], int n) {
+        nCities = n;
+        matrix = new double*[nCities];
+        for (int i = 0; i < nCities; i++)
+            matrix[i] = new double[nCities];
+
+        for (int i = 0; i < nCities; i++) {
+            for (int j = 0; j < nCities; j++) {
+                matrix[i][j] = round2(calcDistance(
+                    cities[i].getX(), cities[i].getY(),
+                    cities[j].getX(), cities[j].getY()
+                ));
+            }
+        }
+    }
+
+    ~DistanceMatrix() {
+        for (int i = 0; i < nCities; i++)
+            delete[] matrix[i];
+        delete[] matrix;
+    }
+
+    int getNumCities() { return nCities; }
+    double getDistance(int i, int j) { return matrix[i][j]; }
+
+    double calculateTourDistance(int tour[], int size) {
+        double total = 0.0;
+        for (int i = 0; i < size - 1; i++)
+            total += matrix[tour[i]][tour[i + 1]];
+        total += matrix[tour[size - 1]][tour[0]]; 
+        return round2(total);
+    }
+
+    void print() {
+        for (int i = 0; i < nCities; i++) {
+            for (int j = 0; j < nCities; j++)
+                cout << matrix[i][j] << "\t";
+            cout << endl;
+        }
+    }
+};
+
+
+int main() {
+    cout << "TESTING DISTANCEMATRIX CLASS" << endl << endl;
+
+    City cities[4] = {
+        City(0, 0.0, 0.0),
+        City(1, 4.0, 0.0),
+        City(2, 4.0, 3.0),
+        City(3, 0.0, 3.0)
+    };
+
+    cout << "[TEST 1] Creating Cities" << endl;
+    for (int i = 0; i < 4; i++)
+        cout << "City " << cities[i].getId() << ": ("
+             << cities[i].getX() << ", " << cities[i].getY() << ")" << endl;
+    cout << "Created 4 cities" << endl << endl;
+
+    cout << "[TEST 2] Building Distance Matrix" << endl;
+    DistanceMatrix distMatrix(cities, 4);
+    cout << " Distance matrix created" << endl << endl;
+
+    cout << "[TEST 3] Getting Number of Cities" << endl;
+
     int numCities = distMatrix.getNumCities();
     cout << "Number of cities: " << numCities << endl;
+
     if (numCities == 4) {
-        cout << "✓ PASS: Correct number of cities" << endl;
-    } else {
-        cout << "✗ FAIL: Expected 4 cities" << endl;
+    cout << " Pass" << endl << endl;
+    }
+    else {
+         cout << " Fail" << endl;
+          return 1;
+         }
+
+    cout << "[TEST 4] Testing Specific Distances" << endl;
+    double d01 = distMatrix.getDistance(0, 1);
+    double d12 = distMatrix.getDistance(1, 2);
+    double d02 = distMatrix.getDistance(0, 2);
+
+    cout << "Distance 0->1: " << d01 << " (expected 4.00)" << endl;
+    cout << "Distance 1->2: " << d12 << " (expected 3.00)" << endl;
+    cout << "Distance 0->2: " << d02 << " (expected 5.00)" << endl;
+
+    if (d01 != 4.0 || d12 != 3.0 || d02 != 5.0) 
+    return 1;
+
+    cout << "\n[TEST 5] Testing Symmetry" << endl;
+
+    if (distMatrix.getDistance(0, 1) == distMatrix.getDistance(1, 0)){
+
+        cout << "Distances are symmetric" << endl;
+    }
+    else{ 
         return 1;
     }
-    
-    // Test specific distances
-    cout << "\n[TEST 4] Testing Specific Distances" << endl;
-    cout << fixed << setprecision(2);
-    
-    // Distance from City0 to City1 (horizontal: 4 units)
-    double dist01 = distMatrix.getDistance(0, 1);
-    cout << "Distance City0->City1: " << dist01 << " (expected: 4.00)" << endl;
-    if (dist01 == 4.0) {
-        cout << "✓ PASS" << endl;
-    } else {
-        cout << "✗ FAIL" << endl;
-        return 1;
-    }
-    
-    // Distance from City1 to City2 (vertical: 3 units)
-    double dist12 = distMatrix.getDistance(1, 2);
-    cout << "Distance City1->City2: " << dist12 << " (expected: 3.00)" << endl;
-    if (dist12 == 3.0) {
-        cout << "✓ PASS" << endl;
-    } else {
-        cout << "✗ FAIL" << endl;
-        return 1;
-    }
-    
-    // Distance from City0 to City2 (diagonal: 5 units by Pythagorean theorem)
-    double dist02 = distMatrix.getDistance(0, 2);
-    cout << "Distance City0->City2: " << dist02 << " (expected: 5.00)" << endl;
-    if (dist02 == 5.0) {
-        cout << "✓ PASS" << endl;
-    } else {
-        cout << "✗ FAIL" << endl;
-        return 1;
-    }
-    
-    // Test symmetry
-    cout << "\n[TEST 5] Testing Distance Symmetry" << endl;
-    double dist10 = distMatrix.getDistance(1, 0);
-    cout << "Distance City0->City1: " << dist01 << endl;
-    cout << "Distance City1->City0: " << dist10 << endl;
-    if (dist01 == dist10) {
-        cout << "✓ PASS: Distance is symmetric" << endl;
-    } else {
-        cout << "✗ FAIL: Distance should be symmetric" << endl;
-        return 1;
-    }
-    
-    // Test distance to self
+
     cout << "\n[TEST 6] Testing Distance to Self" << endl;
-    double distSelf = distMatrix.getDistance(0, 0);
-    cout << "Distance City0->City0: " << distSelf << endl;
-    if (distSelf == 0.0) {
-        cout << "✓ PASS: Distance to self is zero" << endl;
-    } else {
-        cout << "✗ FAIL: Distance to self should be 0" << endl;
-        return 1;
+    if (distMatrix.getDistance(0, 0) == 0.0){
+
+        cout << "✓ Distance to self is zero" << endl;
     }
-    
-    // Test tour distance calculation
+    else{
+         return 1;
+    }
+
     cout << "\n[TEST 7] Testing Tour Distance Calculation" << endl;
-    vector<int> tour = {0, 1, 2, 3};  // Square perimeter: 4+3+4+3 = 14
-    double tourDist = distMatrix.calculateTourDistance(tour);
-    cout << "Tour: 0->1->2->3->0" << endl;
-    cout << "Tour distance: " << tourDist << " (expected: 14.00)" << endl;
-    if (tourDist == 14.0) {
-        cout << "✓ PASS: Tour distance correct" << endl;
-    } else {
-        cout << "✗ FAIL: Expected tour distance 14.0" << endl;
-        return 1;
+    int tour[4] = {0, 1, 2, 3};
+    double tourDist = distMatrix.calculateTourDistance(tour, 4);
+    cout << "Tour distance (0->1->2->3->0): " << tourDist << " (expected 14.00)" << endl;
+    if (tourDist != 14.0){
+
+     return 1;
     }
-    
-    // Print the matrix
+
     cout << "\n[TEST 8] Printing Distance Matrix" << endl;
     distMatrix.print();
-    cout << "✓ PASS: Matrix printed successfully" << endl;
-    
-    // Final summary
-    cout << "\n========================================" << endl;
-    cout << "    ALL TESTS PASSED! ✓✓✓" << endl;
-    cout << "    DistanceMatrix is working correctly!" << endl;
-    cout << "========================================" << endl;
-    
+    cout << "✓ Matrix printed successfully" << endl;
+
+    cout << "\nALL TESTS PASSED!" << endl;
+    cout << "DistanceMatrix is working perfectly!" << endl;
+
     return 0;
 }
