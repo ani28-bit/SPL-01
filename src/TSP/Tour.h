@@ -2,46 +2,80 @@
 #define TOUR_H
 
 #include "City.h"
-#include <iostream>
 
 #define MAX_CITIES 100
 
-class Tour {
-private:
-    City cities[MAX_CITIES];
-    int cityCount;
-    double distance;
+ class Tour {
+  private:
+     City cities[MAX_CITIES];
+     int cityCount;
+     double distance;
 
-public:
-    Tour() : cityCount(0), distance(0.0) {}
+     void calculateDistance();
+
+    public:
+
+       Tour();
+       Tour(const Tour& other);
+
+      ~Tour() {} 
+
+      Tour& operator = (const Tour& other);
     
-    void setCities(City c[], int n) {
-        if (n > MAX_CITIES) {
-            std::cerr << "Error: Number of cities exceeds maximum limit!" << std::endl;
-            return;
+       void setCities(City c[], int n); 
+
+       bool addCity(const City& city);
+       bool removeCity(int idx);
+       void swapCities(int idx1,int idx2);  
+       void clear();
+        
+      
+    
+        City* getCities() {
+
+             return cities; 
+
+         }
+
+        const City* getCities() const {
+
+             return cities;
+
+             }  
+    
+        int getCityCount() const {
+
+             return cityCount;
+
+          }
+    
+   
+       double getDistance() const { 
+
+             return distance; 
+
         }
-        cityCount = n;
-        for (int i = 0; i < n; ++i) {
-            cities[i] = c[i];
-        }
-    }
+
+        City& getCity(int idx);
+        const City& getCity (int idx)const;
+
+         void setDistance(double d);
+         void updateDistance();
+
+         bool containsCity(const City& city) const;
+
+         bool isValid() const;
     
-    City* getCities() { return cities; }
-    const City* getCities() const { return cities; }  // Add const version
     
-    int getCityCount() const { return cityCount; }
+         bool operator < (const Tour& other) const;
+         bool operator > (const Tour& other) const;
+         bool operator == (const Tour& other) const;
+         bool operator <= (const Tour& other) const;
+         bool operator >= (const Tour& other) const;
     
-    void setDistance(double d) { distance = d; }
-    double getDistance() const { return distance; }
-    
-    void printTour() const {
-        for (int i = 0; i < cityCount; ++i) {
-            std::cout << cities[i].getId() << " -> ";
-        }
-        if (cityCount > 0) {
-            std::cout << cities[0].getId() << std::endl;
-        }
-    }
+          void printTour() const;
+          void printDetailed()const;
+       
 };
 
 #endif

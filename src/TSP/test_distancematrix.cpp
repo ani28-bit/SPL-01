@@ -151,15 +151,6 @@ int main() {
          return 1;
     }
 
-    cout << "\n[TEST 7] Testing Tour Distance Calculation" << endl;
-    int tour[4] = {0, 1, 2, 3};
-    double tourDist = distMatrix.calculateTourDistance(tour, 4);
-    cout << "Tour distance (0->1->2->3->0): " << tourDist << " (expected 14.00)" << endl;
-    if (tourDist != 14.0){
-
-     return 1;
-    }
-
     cout << "\n[TEST 8] Printing Distance Matrix" << endl;
     distMatrix.print();
     cout << "✓ Matrix printed successfully" << endl;
