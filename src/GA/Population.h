@@ -1,29 +1,49 @@
-#ifndef POPULATION_H
-#define POPULATION_H
 
-#include "src/TSP/Tour.h"
-#include "src/TSP/DistanceMatrix.h"
+ #ifndef POPULATION_H
+ #define POPULATION_H
+
+ #include "src/TSP/Tour.h"
+ #include "src/TSP/DistanceMatrix.h"
 
   class Population {
-    private:
-    Tour* tours;  
-    int size;     
 
-public:
-    Population(int popSize, int numCities, const DistanceMatrix& dm);
-    ~Population();
+      private:
 
-    Tour* getBest();
+        Tour* tours;  
+        int size;     
 
-    int getSize() const { return size; }
+   public:
+
+       Population(int popSize, int numCities, const DistanceMatrix& dm);
+
+       ~Population();
+
+        Tour* getBest();
+
+        int getSize() const { 
+
+            return size;
+
+         }
 
     
-    Tour& operator[](int index) { return tours[index]; }
-    const Tour& operator[](int index) const { return tours[index]; }
+       Tour& operator[](int idx) { 
 
-    // disable copying to prevent double delete
-    Population(const Population&) = delete;
-    Population& operator=(const Population&) = delete;
-};
+              return tours[idx]; 
+            
+            }
+        const Tour& operator[](int idx) const { 
 
-#endif 
+             return tours[idx];
+
+         }
+
+    
+        Population(const Population&) = delete;
+
+        Population& operator=(const Population&) = delete;
+
+
+   };
+
+    #endif 
