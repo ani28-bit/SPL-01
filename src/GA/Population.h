@@ -1,7 +1,7 @@
 #ifndef POPULATION_H
 #define POPULATION_H
 
-#include "src/TSP/Tour.h"
+#include "../TSP/Tour.h"
 
 class Population {
 private:
