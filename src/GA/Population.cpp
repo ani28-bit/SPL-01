@@ -1,6 +1,6 @@
  #include "Population.h"
  #include <cstdlib>
- #include <ctime>
+ 
 
 
  Population::Population(int popSize, City cities[], int numCities){
@@ -9,13 +9,13 @@
              tours = new Tour[size];
     
     
-           static bool seeded = false;
+          /* static bool seeded = false;
 
            if (!seeded) {
 
            srand(static_cast<unsigned>(time(nullptr)));
              seeded = true;
-        }
+        }*/
     
     
           for (int i = 0; i < size; ++i) {
