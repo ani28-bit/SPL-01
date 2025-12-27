@@ -3,45 +3,57 @@
 
 #include "../TSP/Tour.h"
 
-class Population {
-private:
-    Tour* tours;
-    int size;
+  class Population {
 
- public:
+      private:
+
+         Tour* tours;
+          int size;
+
+      public:
     
-     Population(int popSize, City cities[], int numCities);
+          Population(int popSize, City cities[], int numCities);
     
     
-      ~Population();
+          ~Population();
     
     
-      Tour* getBest();
+           Tour* getBest();
+            Tour* getWorst();
+             double getAvgFitness() const;
+               void sortByFitness();
     
    
-      int getSize() const {
+            int getSize() const {
 
-              return size;
+                    return size;
+
+            }
+    
+    
+          Tour& operator[](int idx) {
+
+
+                   return tours[idx];
+
          }
     
-    
-    Tour& operator[](int idx) {
+           const Tour& operator[](int idx) const {
 
+                   return tours[idx];
 
-              return tours[idx];
+          }
 
-    }
-    
-    const Tour& operator[](int idx) const {
+          Tour* getTours(){
 
-              return tours[idx];
-
-    }
+                 return tours;
+          }
     
    
-     Population(const Population&) = delete;
+           Population(const Population&) = delete;
 
-     Population& operator=(const Population&) = delete;
-  };
+           Population& operator=(const Population&) = delete;
 
-  #endif 
+     };
+
+     #endif 
