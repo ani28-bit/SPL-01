@@ -9,14 +9,6 @@
              tours = new Tour[size];
     
     
-          /* static bool seeded = false;
-
-           if (!seeded) {
-
-           srand(static_cast<unsigned>(time(nullptr)));
-             seeded = true;
-        }*/
-    
     
           for (int i = 0; i < size; ++i) {
 
@@ -28,9 +20,9 @@
 
                     int k = rand() % (j + 1);
                     tours[i].swapCities(j, k);
-         }
-      }
-  }
+          }
+       }
+    }
 
 
       Population::~Population(){
@@ -55,12 +47,61 @@
 
           double dist = tours[i].getDistance();
 
-        if (dist < bestDistance) {
+           if (dist < bestDistance) {
 
-              bestDistance = dist;
-              best = &tours[i];
+               bestDistance = dist;
+               best = &tours[i];
         }
     }
     
      return best;
- }
+  }
+
+  Tour* Population::getWorst(){
+      if(size == 0){
+         return nullptr;
+      }
+
+      Tour* worst = &tours[0];
+       double worstDistance = tours[0].getDistance();
+
+       for(int i=1;i<size;++i){
+          double dist = tours[i].getDistance();
+
+          if(dist > worstDistance){
+              worstDistance = dist;
+              worst = &tours[i];
+          }
+       }
+       return worst;
+  }
+
+     double Population::getAvgFitness() const{
+          if(size == 0){
+
+            return 0.0;
+          }
+
+          double sum = 0.0;
+
+          for(int i=0;i<size;++i){
+
+              sum+= tours[i].getDistance();
+          }
+
+          return sum/size;
+     }
+
+        void Population:: sortByFitness(){
+             
+         for(int i=0;i<size-1;++i){
+              for(int j=0;j<size-i-1;++j){
+                   if(tours[j].getDistance() > tours[j+1].getDistance()){
+                           Tour temp = tours[j];
+                            tours[j] = tours[j+1];
+                            tours[j+1] = temp; 
+
+                   }
+              }
+         }
+     }
