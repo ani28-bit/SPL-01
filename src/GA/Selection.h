@@ -16,6 +16,6 @@ class Selection {
     
     static Tour randomSelection(Tour population[],int populationSize);
 
-};
+ };
 
 #endif
