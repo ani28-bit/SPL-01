@@ -2,6 +2,7 @@
  #define CITY_H
 
  class City {
+
  private:
     int id;
     double x;
@@ -13,12 +14,9 @@
     City(int idVal, double xVal, double yVal);
     
     
-    int getId() 
-     const;
-    double getX() 
-     const;
-    double getY()
-     const;
+    int getId()const;
+    double getX()const;
+    double getY()const;
     
 
     void setId(int idVal);
@@ -26,11 +24,11 @@
     void setY(double yVal);
     
     
-    double distanceTo(const City& other)
+     double distanceTo(const City& other)
      const;
-};
+  };
 
-#endif
+ #endif
 
 
 
