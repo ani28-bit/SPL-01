@@ -15,13 +15,14 @@
     
       static Tour edgeCrossover(const Tour& parent1, const Tour& parent2);
 
- private:
+  private:
    
-    static bool containsCity(const City* cities, int size, int cityId);
+       static bool containsCity(const City* cities, int size, int cityId);
     
     
-    static int findCityPosition(const Tour& tour, int cityId);
-};
+       static int findCityPosition(const Tour& tour, int cityId);
 
-#endif
+   };
+
+   #endif
 
