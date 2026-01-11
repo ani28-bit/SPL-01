@@ -68,18 +68,18 @@ string intToString(int n) {
 
             if (i == j){
 
-                matrix[i][j] = 0.0;
+                 matrix[i][j] = 0.0;
             }
 
             else{
 
-                matrix[i][j] = cities[i].distanceTo(cities[j]);
+                 matrix[i][j] = cities[i].distanceTo(cities[j]);
          }
       }
     }
  }
 
-double DistanceMatrix::getDistance(int cityIndex1, int cityIndex2) const {
+ double DistanceMatrix::getDistance(int cityIndex1, int cityIndex2) const {
 
     if (cityIndex1 < 0 || cityIndex1 >= numCities || cityIndex2 < 0 || cityIndex2 >= numCities) {
 
