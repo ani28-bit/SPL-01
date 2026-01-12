@@ -1,5 +1,6 @@
- #include "Population.h"
- #include <cstdlib>
+  #include "Population.h"
+  #include <iostream>
+  #include <cstdlib>
  
 
 
@@ -105,3 +106,7 @@
               }
          }
      }
+ 
+
+
+ 

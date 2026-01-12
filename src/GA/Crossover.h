@@ -1,5 +1,5 @@
-#ifndef CROSSOVER_h
-#define CROSSOVER_h
+#ifndef CROSSOVER_H
+#define CROSSOVER_H
 #include "../TSP/Tour.h"
 
  class Crossover{

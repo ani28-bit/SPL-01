@@ -1,37 +1,45 @@
 #include "Timer.h"
+#include <ctime>   
 
-Timer::Timer() : running(false) {}
+Timer::Timer() {
 
-void Timer::start() {
-    startTime = std::chrono::high_resolution_clock::now();
-    running = true;
-}
-
-void Timer::stop() {
-    endTime = std::chrono::high_resolution_clock::now();
     running = false;
-}
+ }
 
-double Timer::getElapsedSeconds() const {
-    std::chrono::time_point<std::chrono::high_resolution_clock> endTimePoint;
-    
-    if (running) {
-        endTimePoint = std::chrono::high_resolution_clock::now();
-    } else {
-        endTimePoint = endTime;
+ void Timer::start() {
+
+      startTime = clock();  
+      running = true;
+ }
+
+  void Timer::stop() {
+
+       endTime = clock();    
+       running = false;
+  }
+
+   double Timer::getElapsedSeconds() const {
+
+        clock_t currentTime;
+
+        if (running) {
+
+              currentTime = clock();
+       } 
+       else {
+
+              currentTime = endTime;
+        }
+
+           return double(currentTime - startTime) / CLOCKS_PER_SEC;
     }
-    
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(
-        endTimePoint - startTime
-    );
-    
-    return duration.count() / 1000000.0;
-}
 
-double Timer::getElapsedMilliseconds() const {
-    return getElapsedSeconds() * 1000.0;
-}
+       double Timer::getElapsedMilliseconds() const {
 
-void Timer::reset() {
-    running = false;
-}
+            return getElapsedSeconds() * 1000.0;
+    }
+
+     void Timer::reset() {
+
+           running = false;
+    }

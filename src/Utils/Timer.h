@@ -1,31 +1,29 @@
-#ifndef TIMER_H
-#define TIMER_H
+ #ifndef TIMER_H
+ #define TIMER_H
 
-#include <chrono>
+ #include <ctime>   
 
-class Timer {
-private:
-    std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
-    std::chrono::time_point<std::chrono::high_resolution_clock> endTime;
+ class Timer {
+
+  private:
+
+    clock_t startTime;
+    clock_t endTime;
     bool running;
 
-public:
-    Timer();
-    
-    // Start the timer
-    void start();
-    
-    // Stop the timer
-    void stop();
-    
-    // Get elapsed time in seconds
-    double getElapsedSeconds() const;
-    
-    // Get elapsed time in milliseconds
-    double getElapsedMilliseconds() const;
-    
-    // Reset the timer
-    void reset();
-};
+  public:
 
-#endif
+     Timer();
+
+      void start();
+
+       void stop();
+
+       double getElapsedSeconds() const;
+
+       double getElapsedMilliseconds() const;
+
+       void reset();
+   };
+
+  #endif
