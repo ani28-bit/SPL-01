@@ -3,7 +3,7 @@
 #include <iostream> 
 #include <cmath>
 
-// default value
+
  City::City() : id(0), x(0.0), y(0.0) {}
 
 
@@ -13,7 +13,7 @@
     //City c(5, 10.5, 20.7);
 
 
-// getters
+
  int City::getId() const { 
 
       return id; 
@@ -29,7 +29,7 @@
      return y; 
  }
 
-// setters
+
  void City::setId(int idVal) {
 
      id = idVal; 
@@ -45,7 +45,7 @@
      y = yVal; 
  }
 
-// calculate Euclidean distance
+
  double City::distanceTo(const City& other) const {
     double dx = x - other.x;
     double dy = y - other.y;
