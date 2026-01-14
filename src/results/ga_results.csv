@@ -1,0 +1,323 @@
+Loaded 15 cities from cities.txt.
+
+--- GA RUN OUTPUT ---
+GA TSP Solver Started.
+Initial Population:
+Tour 0: Tour: 5 -> 6 -> 13 -> 1 -> 11 -> 12 -> 3 -> 9 -> 14 -> 4 -> 8 -> 10 -> 2 -> 0 -> 7 -> 5 | Distance: 408.375
+Distance: 408.38
+Tour 1: Tour: 2 -> 11 -> 8 -> 4 -> 7 -> 5 -> 13 -> 6 -> 12 -> 14 -> 3 -> 0 -> 1 -> 10 -> 9 -> 2 | Distance: 429.73
+Distance: 429.73
+Tour 2: Tour: 12 -> 11 -> 10 -> 0 -> 14 -> 1 -> 9 -> 6 -> 5 -> 13 -> 8 -> 4 -> 3 -> 7 -> 2 -> 12 | Distance: 462.08
+Distance: 462.08
+Tour 3: Tour: 10 -> 11 -> 12 -> 14 -> 5 -> 6 -> 1 -> 0 -> 4 -> 13 -> 3 -> 9 -> 8 -> 7 -> 2 -> 10 | Distance: 463.77
+Distance: 463.77
+Tour 4: Tour: 2 -> 12 -> 13 -> 14 -> 10 -> 8 -> 5 -> 7 -> 11 -> 0 -> 3 -> 6 -> 4 -> 9 -> 1 -> 2 | Distance: 479.33
+Distance: 479.33
+Tour 5: Tour: 0 -> 12 -> 13 -> 6 -> 1 -> 4 -> 7 -> 5 -> 8 -> 3 -> 14 -> 2 -> 10 -> 11 -> 9 -> 0 | Distance: 494.12
+Distance: 494.12
+Tour 6: Tour: 2 -> 10 -> 0 -> 13 -> 12 -> 1 -> 9 -> 11 -> 14 -> 6 -> 5 -> 3 -> 7 -> 4 -> 8 -> 2 | Distance: 511.61
+Distance: 511.61
+Tour 7: Tour: 0 -> 6 -> 7 -> 10 -> 9 -> 4 -> 13 -> 2 -> 11 -> 12 -> 14 -> 8 -> 5 -> 3 -> 1 -> 0 | Distance: 511.78
+Distance: 511.78
+Tour 8: Tour: 12 -> 0 -> 11 -> 10 -> 8 -> 14 -> 13 -> 3 -> 9 -> 6 -> 1 -> 4 -> 7 -> 5 -> 2 -> 12 | Distance: 522.91
+Distance: 522.91
+Tour 9: Tour: 7 -> 2 -> 13 -> 12 -> 5 -> 6 -> 4 -> 8 -> 11 -> 3 -> 0 -> 1 -> 10 -> 14 -> 9 -> 7 | Distance: 523.56
+Distance: 523.56
+Tour 10: Tour: 8 -> 5 -> 9 -> 2 -> 4 -> 11 -> 0 -> 1 -> 13 -> 14 -> 7 -> 6 -> 12 -> 10 -> 3 -> 8 | Distance: 528.09
+Distance: 528.09
+Tour 11: Tour: 5 -> 0 -> 7 -> 9 -> 14 -> 3 -> 13 -> 8 -> 6 -> 1 -> 11 -> 12 -> 10 -> 2 -> 4 -> 5 | Distance: 532.27
+Distance: 532.27
+Tour 12: Tour: 14 -> 7 -> 6 -> 1 -> 9 -> 8 -> 5 -> 10 -> 12 -> 0 -> 11 -> 4 -> 13 -> 3 -> 2 -> 14 | Distance: 537.41
+Distance: 537.41
+Tour 13: Tour: 2 -> 9 -> 13 -> 8 -> 14 -> 0 -> 4 -> 5 -> 6 -> 3 -> 1 -> 10 -> 12 -> 7 -> 11 -> 2 | Distance: 543.55
+Distance: 543.55
+Tour 14: Tour: 6 -> 7 -> 10 -> 3 -> 2 -> 0 -> 14 -> 12 -> 8 -> 9 -> 5 -> 1 -> 11 -> 13 -> 4 -> 6 | Distance: 550.00
+Distance: 550.00
+Tour 15: Tour: 9 -> 14 -> 8 -> 2 -> 0 -> 12 -> 13 -> 10 -> 1 -> 4 -> 11 -> 5 -> 6 -> 7 -> 3 -> 9 | Distance: 558.44
+Distance: 558.44
+Tour 16: Tour: 12 -> 14 -> 9 -> 11 -> 10 -> 7 -> 0 -> 1 -> 8 -> 3 -> 2 -> 13 -> 4 -> 5 -> 6 -> 12 | Distance: 560.23
+Distance: 560.23
+Tour 17: Tour: 12 -> 10 -> 7 -> 2 -> 1 -> 3 -> 13 -> 0 -> 5 -> 6 -> 4 -> 8 -> 11 -> 14 -> 9 -> 12 | Distance: 564.45
+Distance: 564.45
+Tour 18: Tour: 14 -> 5 -> 0 -> 10 -> 12 -> 13 -> 3 -> 11 -> 1 -> 8 -> 6 -> 7 -> 2 -> 9 -> 4 -> 14 | Distance: 565.59
+Distance: 565.59
+Tour 19: Tour: 14 -> 10 -> 1 -> 9 -> 7 -> 8 -> 5 -> 13 -> 6 -> 0 -> 12 -> 11 -> 4 -> 2 -> 3 -> 14 | Distance: 566.37
+Distance: 566.37
+Tour 20: Tour: 4 -> 7 -> 11 -> 2 -> 10 -> 12 -> 5 -> 6 -> 13 -> 1 -> 8 -> 0 -> 3 -> 14 -> 9 -> 4 | Distance: 573.35
+Distance: 573.35
+Tour 21: Tour: 0 -> 3 -> 9 -> 12 -> 11 -> 1 -> 10 -> 5 -> 2 -> 13 -> 6 -> 14 -> 8 -> 4 -> 7 -> 0 | Distance: 579.13
+Distance: 579.13
+Tour 22: Tour: 12 -> 1 -> 9 -> 0 -> 10 -> 3 -> 11 -> 13 -> 14 -> 5 -> 8 -> 2 -> 6 -> 7 -> 4 -> 12 | Distance: 583.15
+Distance: 583.15
+Tour 23: Tour: 5 -> 14 -> 10 -> 3 -> 7 -> 9 -> 1 -> 0 -> 11 -> 13 -> 2 -> 6 -> 12 -> 4 -> 8 -> 5 | Distance: 590.77
+Distance: 590.77
+Tour 24: Tour: 5 -> 2 -> 1 -> 11 -> 6 -> 4 -> 3 -> 12 -> 8 -> 0 -> 13 -> 10 -> 14 -> 9 -> 7 -> 5 | Distance: 591.56
+Distance: 591.56
+Tour 25: Tour: 2 -> 12 -> 3 -> 14 -> 10 -> 6 -> 13 -> 7 -> 8 -> 11 -> 0 -> 9 -> 1 -> 4 -> 5 -> 2 | Distance: 596.84
+Distance: 596.84
+Tour 26: Tour: 3 -> 9 -> 0 -> 5 -> 13 -> 6 -> 2 -> 1 -> 11 -> 12 -> 7 -> 10 -> 14 -> 8 -> 4 -> 3 | Distance: 597.87
+Distance: 597.87
+Tour 27: Tour: 3 -> 11 -> 5 -> 4 -> 10 -> 6 -> 7 -> 14 -> 1 -> 12 -> 9 -> 13 -> 8 -> 2 -> 0 -> 3 | Distance: 603.24
+Distance: 603.24
+Tour 28: Tour: 13 -> 7 -> 8 -> 10 -> 9 -> 2 -> 14 -> 5 -> 4 -> 3 -> 1 -> 6 -> 12 -> 11 -> 0 -> 13 | Distance: 608.53
+Distance: 608.53
+Tour 29: Tour: 8 -> 14 -> 0 -> 2 -> 6 -> 11 -> 12 -> 4 -> 9 -> 1 -> 10 -> 3 -> 5 -> 13 -> 7 -> 8 | Distance: 612.34
+Distance: 612.34
+Tour 30: Tour: 7 -> 2 -> 14 -> 10 -> 11 -> 8 -> 6 -> 9 -> 12 -> 3 -> 5 -> 0 -> 1 -> 4 -> 13 -> 7 | Distance: 612.68
+Distance: 612.68
+Tour 31: Tour: 8 -> 9 -> 11 -> 7 -> 4 -> 3 -> 0 -> 14 -> 13 -> 10 -> 12 -> 6 -> 5 -> 2 -> 1 -> 8 | Distance: 618.37
+Distance: 618.37
+Tour 32: Tour: 1 -> 8 -> 5 -> 0 -> 3 -> 2 -> 13 -> 4 -> 7 -> 14 -> 12 -> 6 -> 9 -> 11 -> 10 -> 1 | Distance: 618.89
+Distance: 618.89
+Tour 33: Tour: 2 -> 1 -> 8 -> 12 -> 11 -> 6 -> 10 -> 3 -> 0 -> 9 -> 14 -> 13 -> 5 -> 7 -> 4 -> 2 | Distance: 621.08
+Distance: 621.08
+Tour 34: Tour: 13 -> 2 -> 0 -> 4 -> 1 -> 11 -> 10 -> 6 -> 12 -> 9 -> 7 -> 14 -> 3 -> 8 -> 5 -> 13 | Distance: 621.64
+Distance: 621.64
+Tour 35: Tour: 6 -> 10 -> 11 -> 3 -> 5 -> 2 -> 1 -> 9 -> 14 -> 0 -> 7 -> 12 -> 13 -> 4 -> 8 -> 6 | Distance: 622.45
+Distance: 622.45
+Tour 36: Tour: 12 -> 0 -> 7 -> 11 -> 1 -> 13 -> 5 -> 2 -> 14 -> 9 -> 4 -> 3 -> 6 -> 8 -> 10 -> 12 | Distance: 626.68
+Distance: 626.68
+Tour 37: Tour: 3 -> 0 -> 2 -> 12 -> 5 -> 6 -> 9 -> 8 -> 4 -> 11 -> 7 -> 10 -> 14 -> 13 -> 1 -> 3 | Distance: 626.87
+Distance: 626.87
+Tour 38: Tour: 0 -> 9 -> 11 -> 13 -> 5 -> 2 -> 6 -> 3 -> 1 -> 4 -> 7 -> 8 -> 14 -> 12 -> 10 -> 0 | Distance: 628.44
+Distance: 628.44
+Tour 39: Tour: 10 -> 11 -> 9 -> 14 -> 8 -> 0 -> 3 -> 4 -> 6 -> 7 -> 12 -> 5 -> 2 -> 13 -> 1 -> 10 | Distance: 630.75
+Distance: 630.75
+Tour 40: Tour: 14 -> 8 -> 12 -> 13 -> 2 -> 0 -> 4 -> 5 -> 1 -> 6 -> 7 -> 9 -> 11 -> 10 -> 3 -> 14 | Distance: 630.78
+Distance: 630.78
+Tour 41: Tour: 11 -> 10 -> 8 -> 9 -> 6 -> 12 -> 14 -> 2 -> 0 -> 5 -> 7 -> 1 -> 3 -> 4 -> 13 -> 11 | Distance: 632.33
+Distance: 632.33
+Tour 42: Tour: 1 -> 6 -> 5 -> 13 -> 11 -> 7 -> 2 -> 0 -> 9 -> 8 -> 14 -> 3 -> 4 -> 10 -> 12 -> 1 | Distance: 637.10
+Distance: 637.10
+Tour 43: Tour: 4 -> 11 -> 14 -> 9 -> 12 -> 1 -> 3 -> 0 -> 8 -> 10 -> 7 -> 5 -> 6 -> 2 -> 13 -> 4 | Distance: 638.35
+Distance: 638.35
+Tour 44: Tour: 1 -> 6 -> 11 -> 14 -> 7 -> 3 -> 9 -> 10 -> 2 -> 12 -> 0 -> 5 -> 8 -> 13 -> 4 -> 1 | Distance: 640.82
+Distance: 640.82
+Tour 45: Tour: 3 -> 4 -> 0 -> 5 -> 13 -> 6 -> 9 -> 2 -> 1 -> 12 -> 11 -> 10 -> 8 -> 14 -> 7 -> 3 | Distance: 641.03
+Distance: 641.03
+Tour 46: Tour: 8 -> 0 -> 1 -> 13 -> 2 -> 4 -> 12 -> 9 -> 11 -> 3 -> 7 -> 6 -> 10 -> 14 -> 5 -> 8 | Distance: 642.37
+Distance: 642.37
+Tour 47: Tour: 6 -> 14 -> 9 -> 8 -> 4 -> 2 -> 1 -> 0 -> 13 -> 11 -> 7 -> 3 -> 5 -> 10 -> 12 -> 6 | Distance: 642.57
+Distance: 642.57
+Tour 48: Tour: 7 -> 0 -> 6 -> 8 -> 11 -> 10 -> 1 -> 5 -> 4 -> 12 -> 9 -> 13 -> 3 -> 2 -> 14 -> 7 | Distance: 643.49
+Distance: 643.49
+Tour 49: Tour: 4 -> 13 -> 6 -> 10 -> 2 -> 9 -> 0 -> 11 -> 7 -> 8 -> 3 -> 12 -> 5 -> 14 -> 1 -> 4 | Distance: 649.06
+Distance: 649.06
+Tour 50: Tour: 4 -> 12 -> 1 -> 14 -> 13 -> 5 -> 7 -> 10 -> 8 -> 11 -> 0 -> 6 -> 2 -> 9 -> 3 -> 4 | Distance: 650.61
+Distance: 650.61
+Tour 51: Tour: 9 -> 13 -> 6 -> 12 -> 1 -> 2 -> 4 -> 3 -> 8 -> 14 -> 5 -> 0 -> 10 -> 11 -> 7 -> 9 | Distance: 651.44
+Distance: 651.44
+Tour 52: Tour: 2 -> 10 -> 1 -> 14 -> 6 -> 11 -> 12 -> 7 -> 13 -> 3 -> 9 -> 5 -> 0 -> 8 -> 4 -> 2 | Distance: 651.79
+Distance: 651.79
+Tour 53: Tour: 1 -> 11 -> 8 -> 7 -> 0 -> 5 -> 9 -> 2 -> 10 -> 3 -> 12 -> 4 -> 13 -> 6 -> 14 -> 1 | Distance: 651.89
+Distance: 651.89
+Tour 54: Tour: 10 -> 2 -> 14 -> 7 -> 3 -> 12 -> 5 -> 13 -> 4 -> 8 -> 11 -> 1 -> 6 -> 0 -> 9 -> 10 | Distance: 655.88
+Distance: 655.88
+Tour 55: Tour: 3 -> 0 -> 1 -> 13 -> 10 -> 5 -> 8 -> 12 -> 14 -> 2 -> 6 -> 11 -> 7 -> 4 -> 9 -> 3 | Distance: 656.78
+Distance: 656.78
+Tour 56: Tour: 0 -> 11 -> 4 -> 13 -> 1 -> 9 -> 10 -> 8 -> 2 -> 3 -> 6 -> 5 -> 14 -> 7 -> 12 -> 0 | Distance: 663.54
+Distance: 663.54
+Tour 57: Tour: 7 -> 8 -> 14 -> 3 -> 13 -> 5 -> 2 -> 10 -> 1 -> 4 -> 9 -> 11 -> 6 -> 0 -> 12 -> 7 | Distance: 667.38
+Distance: 667.38
+Tour 58: Tour: 10 -> 13 -> 2 -> 8 -> 7 -> 1 -> 14 -> 0 -> 12 -> 4 -> 11 -> 9 -> 5 -> 6 -> 3 -> 10 | Distance: 667.61
+Distance: 667.61
+Tour 59: Tour: 11 -> 14 -> 5 -> 6 -> 2 -> 1 -> 3 -> 12 -> 13 -> 10 -> 8 -> 9 -> 0 -> 4 -> 7 -> 11 | Distance: 668.39
+Distance: 668.39
+Tour 60: Tour: 14 -> 8 -> 6 -> 13 -> 7 -> 11 -> 12 -> 4 -> 1 -> 2 -> 3 -> 10 -> 9 -> 5 -> 0 -> 14 | Distance: 670.34
+Distance: 670.34
+Tour 61: Tour: 6 -> 12 -> 2 -> 3 -> 7 -> 4 -> 14 -> 0 -> 11 -> 9 -> 5 -> 10 -> 13 -> 8 -> 1 -> 6 | Distance: 674.72
+Distance: 674.72
+Tour 62: Tour: 4 -> 10 -> 13 -> 0 -> 8 -> 2 -> 11 -> 1 -> 7 -> 12 -> 3 -> 6 -> 5 -> 14 -> 9 -> 4 | Distance: 675.34
+Distance: 675.34
+Tour 63: Tour: 13 -> 12 -> 8 -> 5 -> 3 -> 1 -> 7 -> 2 -> 0 -> 6 -> 4 -> 11 -> 14 -> 10 -> 9 -> 13 | Distance: 675.53
+Distance: 675.53
+Tour 64: Tour: 3 -> 11 -> 10 -> 6 -> 1 -> 14 -> 13 -> 5 -> 8 -> 0 -> 7 -> 4 -> 12 -> 9 -> 2 -> 3 | Distance: 679.65
+Distance: 679.65
+Tour 65: Tour: 1 -> 4 -> 12 -> 10 -> 13 -> 9 -> 6 -> 2 -> 14 -> 5 -> 0 -> 11 -> 7 -> 8 -> 3 -> 1 | Distance: 689.80
+Distance: 689.80
+Tour 66: Tour: 2 -> 14 -> 5 -> 3 -> 0 -> 12 -> 6 -> 9 -> 11 -> 13 -> 8 -> 7 -> 10 -> 4 -> 1 -> 2 | Distance: 692.67
+Distance: 692.67
+Tour 67: Tour: 3 -> 9 -> 4 -> 2 -> 14 -> 10 -> 13 -> 12 -> 8 -> 11 -> 0 -> 7 -> 1 -> 6 -> 5 -> 3 | Distance: 695.82
+Distance: 695.82
+Tour 68: Tour: 7 -> 11 -> 2 -> 13 -> 6 -> 4 -> 9 -> 14 -> 1 -> 5 -> 3 -> 10 -> 8 -> 0 -> 12 -> 7 | Distance: 697.43
+Distance: 697.43
+Tour 69: Tour: 12 -> 4 -> 7 -> 1 -> 2 -> 13 -> 11 -> 14 -> 6 -> 9 -> 5 -> 10 -> 0 -> 3 -> 8 -> 12 | Distance: 699.39
+Distance: 699.39
+Tour 70: Tour: 6 -> 14 -> 10 -> 7 -> 1 -> 2 -> 0 -> 5 -> 8 -> 9 -> 4 -> 11 -> 3 -> 13 -> 12 -> 6 | Distance: 700.19
+Distance: 700.19
+Tour 71: Tour: 2 -> 9 -> 13 -> 6 -> 11 -> 3 -> 8 -> 5 -> 0 -> 12 -> 7 -> 1 -> 4 -> 14 -> 10 -> 2 | Distance: 700.99
+Distance: 700.99
+Tour 72: Tour: 12 -> 13 -> 1 -> 3 -> 10 -> 14 -> 6 -> 0 -> 2 -> 9 -> 7 -> 11 -> 5 -> 4 -> 8 -> 12 | Distance: 701.22
+Distance: 701.22
+Tour 73: Tour: 13 -> 4 -> 3 -> 10 -> 6 -> 11 -> 14 -> 2 -> 0 -> 7 -> 12 -> 9 -> 1 -> 5 -> 8 -> 13 | Distance: 703.03
+Distance: 703.03
+Tour 74: Tour: 4 -> 14 -> 8 -> 7 -> 3 -> 1 -> 5 -> 2 -> 9 -> 12 -> 11 -> 13 -> 6 -> 10 -> 0 -> 4 | Distance: 710.74
+Distance: 710.74
+Tour 75: Tour: 12 -> 14 -> 4 -> 3 -> 8 -> 5 -> 9 -> 0 -> 7 -> 1 -> 13 -> 2 -> 6 -> 11 -> 10 -> 12 | Distance: 711.25
+Distance: 711.25
+Tour 76: Tour: 11 -> 13 -> 1 -> 5 -> 2 -> 0 -> 12 -> 8 -> 10 -> 7 -> 4 -> 3 -> 9 -> 6 -> 14 -> 11 | Distance: 716.02
+Distance: 716.02
+Tour 77: Tour: 0 -> 6 -> 7 -> 10 -> 2 -> 3 -> 4 -> 12 -> 5 -> 13 -> 11 -> 14 -> 8 -> 1 -> 9 -> 0 | Distance: 718.62
+Distance: 718.62
+Tour 78: Tour: 10 -> 12 -> 9 -> 6 -> 8 -> 0 -> 7 -> 14 -> 3 -> 1 -> 4 -> 11 -> 13 -> 5 -> 2 -> 10 | Distance: 720.49
+Distance: 720.49
+Tour 79: Tour: 7 -> 4 -> 10 -> 9 -> 3 -> 12 -> 5 -> 11 -> 14 -> 0 -> 13 -> 1 -> 8 -> 2 -> 6 -> 7 | Distance: 720.74
+Distance: 720.74
+Tour 80: Tour: 7 -> 1 -> 6 -> 5 -> 3 -> 0 -> 9 -> 14 -> 2 -> 8 -> 10 -> 12 -> 4 -> 11 -> 13 -> 7 | Distance: 725.64
+Distance: 725.64
+Tour 81: Tour: 1 -> 5 -> 3 -> 12 -> 13 -> 11 -> 0 -> 9 -> 7 -> 2 -> 8 -> 6 -> 10 -> 14 -> 4 -> 1 | Distance: 738.05
+Distance: 738.05
+Tour 82: Tour: 5 -> 10 -> 0 -> 9 -> 14 -> 12 -> 7 -> 3 -> 2 -> 4 -> 1 -> 6 -> 11 -> 13 -> 8 -> 5 | Distance: 740.81
+Distance: 740.81
+Tour 83: Tour: 11 -> 13 -> 3 -> 9 -> 12 -> 5 -> 14 -> 10 -> 8 -> 2 -> 7 -> 4 -> 1 -> 6 -> 0 -> 11 | Distance: 746.13
+Distance: 746.13
+Tour 84: Tour: 11 -> 10 -> 5 -> 1 -> 6 -> 3 -> 8 -> 9 -> 2 -> 14 -> 13 -> 7 -> 0 -> 4 -> 12 -> 11 | Distance: 752.60
+Distance: 752.60
+Tour 85: Tour: 5 -> 10 -> 2 -> 4 -> 12 -> 7 -> 13 -> 1 -> 14 -> 3 -> 0 -> 6 -> 8 -> 11 -> 9 -> 5 | Distance: 753.00
+Distance: 753.00
+Tour 86: Tour: 0 -> 5 -> 11 -> 4 -> 8 -> 13 -> 12 -> 6 -> 10 -> 2 -> 14 -> 9 -> 1 -> 7 -> 3 -> 0 | Distance: 753.55
+Distance: 753.55
+Tour 87: Tour: 2 -> 5 -> 1 -> 7 -> 4 -> 11 -> 3 -> 12 -> 0 -> 14 -> 6 -> 10 -> 13 -> 8 -> 9 -> 2 | Distance: 756.70
+Distance: 756.70
+Tour 88: Tour: 14 -> 8 -> 11 -> 12 -> 4 -> 7 -> 2 -> 13 -> 5 -> 0 -> 3 -> 9 -> 1 -> 6 -> 10 -> 14 | Distance: 757.66
+Distance: 757.66
+Tour 89: Tour: 6 -> 12 -> 2 -> 11 -> 14 -> 9 -> 8 -> 3 -> 5 -> 13 -> 0 -> 7 -> 10 -> 4 -> 1 -> 6 | Distance: 759.62
+Distance: 759.62
+Tour 90: Tour: 6 -> 8 -> 1 -> 3 -> 11 -> 14 -> 4 -> 9 -> 5 -> 12 -> 7 -> 2 -> 0 -> 13 -> 10 -> 6 | Distance: 759.88
+Distance: 759.88
+Tour 91: Tour: 1 -> 4 -> 14 -> 13 -> 11 -> 9 -> 7 -> 10 -> 3 -> 12 -> 0 -> 6 -> 5 -> 2 -> 8 -> 1 | Distance: 765.31
+Distance: 765.31
+Tour 92: Tour: 7 -> 1 -> 4 -> 2 -> 5 -> 3 -> 10 -> 9 -> 13 -> 14 -> 11 -> 8 -> 6 -> 0 -> 12 -> 7 | Distance: 771.57
+Distance: 771.57
+Tour 93: Tour: 12 -> 9 -> 7 -> 3 -> 2 -> 6 -> 10 -> 4 -> 1 -> 14 -> 5 -> 8 -> 0 -> 13 -> 11 -> 12 | Distance: 772.39
+Distance: 772.39
+Tour 94: Tour: 6 -> 9 -> 7 -> 14 -> 0 -> 12 -> 3 -> 11 -> 13 -> 10 -> 4 -> 1 -> 5 -> 8 -> 2 -> 6 | Distance: 775.45
+Distance: 775.45
+Tour 95: Tour: 14 -> 7 -> 1 -> 2 -> 5 -> 13 -> 3 -> 6 -> 11 -> 9 -> 12 -> 0 -> 8 -> 10 -> 4 -> 14 | Distance: 777.08
+Distance: 777.08
+Tour 96: Tour: 2 -> 10 -> 5 -> 11 -> 7 -> 12 -> 14 -> 9 -> 6 -> 1 -> 4 -> 13 -> 8 -> 0 -> 3 -> 2 | Distance: 789.37
+Distance: 789.37
+Tour 97: Tour: 3 -> 9 -> 6 -> 10 -> 11 -> 13 -> 1 -> 5 -> 0 -> 8 -> 12 -> 7 -> 14 -> 4 -> 2 -> 3 | Distance: 846.38
+Distance: 846.38
+Tour 98: Tour: 12 -> 10 -> 4 -> 3 -> 2 -> 13 -> 1 -> 7 -> 9 -> 11 -> 6 -> 0 -> 5 -> 14 -> 8 -> 12 | Distance: 853.44
+Distance: 853.44
+Tour 99: Tour: 11 -> 8 -> 10 -> 3 -> 6 -> 12 -> 5 -> 1 -> 9 -> 0 -> 4 -> 2 -> 13 -> 7 -> 14 -> 11 | Distance: 863.81
+Distance: 863.81
+
+Generation 0 Summary
+Order  : 30
+PMX    : 30
+Cycle  : 39
+No Mutation : 95
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 364.06
+
+Generation 50 Summary
+Order  : 39
+PMX    : 27
+Cycle  : 33
+No Mutation : 95
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 212.27
+
+Generation 100 Summary
+Order  : 25
+PMX    : 37
+Cycle  : 37
+No Mutation : 97
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 150 Summary
+Order  : 24
+PMX    : 42
+Cycle  : 33
+No Mutation : 95
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 200 Summary
+Order  : 32
+PMX    : 36
+Cycle  : 31
+No Mutation : 95
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 250 Summary
+Order  : 32
+PMX    : 37
+Cycle  : 30
+No Mutation : 89
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 300 Summary
+Order  : 25
+PMX    : 42
+Cycle  : 32
+No Mutation : 97
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 350 Summary
+Order  : 32
+PMX    : 36
+Cycle  : 31
+No Mutation : 94
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 400 Summary
+Order  : 35
+PMX    : 36
+Cycle  : 28
+No Mutation : 93
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 450 Summary
+Order  : 28
+PMX    : 41
+Cycle  : 30
+No Mutation : 96
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Generation 499 Summary
+Order  : 35
+PMX    : 32
+Cycle  : 32
+No Mutation : 94
+Swap       : 0
+Scramble  : 0
+Insertion  : 0
+Best Distance: 210.62
+
+Final Best Tour: Tour: 4 -> 5 -> 6 -> 7 -> 8 -> 13 -> 9 -> 14 -> 12 -> 10 -> 11 -> 0 -> 1 -> 2 -> 3 -> 4 | Distance: 210.62
+Distance: 210.62
+Execution Time: 0.73 seconds
+
+Execution Time: 0.73813 seconds.
+GA completed. To save output as CSV, run:
+./tsp_solver > results/ga_results.csv
