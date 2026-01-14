@@ -68,12 +68,12 @@ string intToString(int n) {
 
             if (i == j){
 
-                 matrix[i][j] = 0.0;
+                   matrix[i][j] = 0.0;
             }
 
             else{
 
-                 matrix[i][j] = cities[i].distanceTo(cities[j]);
+                   matrix[i][j] = cities[i].distanceTo(cities[j]);
          }
       }
     }
