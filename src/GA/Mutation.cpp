@@ -1,4 +1,5 @@
  #include "Mutation.h"
+ #include <iostream>
  #include <cstdlib>
  #include <algorithm>
 
@@ -140,36 +141,42 @@
          }
 
 
-             void Mutation::applyMutation(Tour& tour, double mutationRate) {
+             void Mutation::applyMutation(Tour& tour,
+                             double mutationRate,
+                             std::string& mutationName) {
 
-               double random = (double)rand() / RAND_MAX;
-    
-                if (random < mutationRate) {
+              double random = (double)rand() / RAND_MAX;
 
-       
-                   int mutationType = rand() % 4;
-        
-                          switch(mutationType) {
+              if (random < mutationRate) {
 
-                        case 0:
+                      int mutationType = rand() % 4;
 
-                              swapMutation(tour);
-                              break;
+         switch (mutationType) {
 
-                        case 1:
+            case 0:
+                mutationName = "Swap Mutation";
+                swapMutation(tour);
+                break;
 
-                              inversionMutation(tour);
-                              break;
+            case 1:
+                mutationName = "Inversion Mutation";
+                inversionMutation(tour);
+                break;
 
-                        case 2:
+            case 2:
+                mutationName = "Insertion Mutation";
+                insertionMutation(tour);
+                break;
 
-                              insertionMutation(tour);
-                              break;
-
-                        case 3:
-
-                              scrambleMutation(tour);
-                              break;
+            case 3:
+                mutationName = "Scramble Mutation";
+                scrambleMutation(tour);
+                break;
         }
     }
-}
+
+          else {
+
+                 mutationName = "No Mutation";
+      }
+  }
