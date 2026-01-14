@@ -1,4 +1,6 @@
   #include "Crossover.h"
+  #include <iostream>
+  #include <string>
   #include <cstdlib>
   #include <algorithm>
 
@@ -170,7 +172,8 @@
          else {
 
                      childCities[pos] = parent2.getCity(pos);
-           }
+
+                }
         
                      taken[pos] = true;
         
@@ -201,7 +204,34 @@
                     return child;
     }
 
-        Tour Crossover::edgeCrossover(const Tour& parent1, const Tour& parent2) {
-    
-               return orderCrossover(parent1, parent2);
-       }
+
+
+        Tour Crossover::randomCrossover(const Tour& parent1,
+                                const Tour& parent2,
+                                std::string& crossoverName) {
+
+             int choice = rand() % 3;   
+
+             Tour child;
+
+            if (choice == 0) {
+
+                 crossoverName = "Order Crossover";
+                   child = orderCrossover(parent1, parent2);
+            }
+
+           else if (choice == 1) {
+
+                  crossoverName = "PMX Crossover";
+                  child = pmxCrossover(parent1, parent2);
+
+             }
+
+            else {
+
+                     crossoverName = "Cycle Crossover";
+                     child = cycleCrossover(parent1, parent2);
+              }
+
+                     return child;
+         }
