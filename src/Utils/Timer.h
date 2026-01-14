@@ -1,29 +1,25 @@
  #ifndef TIMER_H
  #define TIMER_H
+ #include <ctime>
 
- #include <ctime>   
+  class Timer {
 
- class Timer {
+   private:
 
-  private:
+    clock_t startTime = 0;
+    clock_t endTime = 0;
+    bool running = false;
 
-    clock_t startTime;
-    clock_t endTime;
-    bool running;
+   public:
 
-  public:
+       Timer();
 
-     Timer();
+       void start();                   
+        void stop();                   
+         double getElapsedSeconds() const;       
+          double getElapsedMilliseconds() const;  
+            void reset();    
 
-      void start();
+    };
 
-       void stop();
-
-       double getElapsedSeconds() const;
-
-       double getElapsedMilliseconds() const;
-
-       void reset();
-   };
-
-  #endif
+   #endif
