@@ -4,46 +4,43 @@
 #include "../TSP/Tour.h"
 #include "../TSP/City.h"
 #include "Population.h"
+#include <string>
 
+class GeneticAlgorithm {
+private:
+    int populationSize;
+    int generations;
+    int elitismCount;
+    int tournamentSize;
+    double crossoverRate;
+    double mutationRate;
 
- class GeneticAlgorithm {
+    City* cities;
+    int numCities;
 
- private:
+    Tour bestTour;
+    double bestDistance;
 
-    int populationSize,generations,elitismCount,tournamentSize;
-    double crossoverRate, mutationRate;
-   
     
-      City* cities;
-      int numCities;
-    
-       Tour bestTour;
-       double bestDistance;
-    
-    
-    public:
-    
-       GeneticAlgorithm(City cities[], int numCities,int popSize = 100,int gens = 500,
-                     double crossRate = 0.8,
-                     double mutRate = 0.02,
-                     int elitism = 2,
-                     int tournSize = 5);
-    
-    
-          void run();
-    
-   
-          Tour getBestTour() const;
-    
-           double getBestDistance() const;
-           void printResults() const;
-    
-    
-     private:
+    Tour createOffspring(Population* pop, std::string& crossoverUsed, std::string& mutationUsed);
 
-         Population* evolvePopulation(Population* pop);
-    
-         Tour createOffspring(Population* pop);
- };
+      public:
+  
+             GeneticAlgorithm(City cities[], int numCities,
+                               int popSize = 100,
+                                int gens = 500,
+                                 double crossRate = 0.8,
+                                  double mutRate = 0.02,
+                                   int elitism = 2,
+                                    int tournSize = 5);
 
-      #endif
+    
+             
+                                   void run();             
+                                    Tour getBestTour() const;
+                                     double getBestDistance() const;
+                                     void printResults() const;
+
+                  };
+
+                  #endif
