@@ -1,8 +1,10 @@
-#ifndef CROSSOVER_H
-#define CROSSOVER_H
-#include "../TSP/Tour.h"
+ #ifndef CROSSOVER_H
+ #define CROSSOVER_H
+ #include "../TSP/Tour.h"
+ #include<string>
 
  class Crossover{
+     
       public : 
         
       static Tour orderCrossover(const Tour& parent1,const Tour& parent2);
@@ -11,9 +13,11 @@
      
    
       static Tour cycleCrossover(const Tour& parent1, const Tour& parent2);
-    
-    
-      static Tour edgeCrossover(const Tour& parent1, const Tour& parent2);
+
+      static Tour randomCrossover(const Tour& parent1,
+                                   const Tour& parent2,
+                                    std::string& crossoverName);
+      
 
   private:
    
