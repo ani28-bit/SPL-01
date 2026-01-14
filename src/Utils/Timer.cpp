@@ -1,45 +1,41 @@
-#include "Timer.h"
-#include <ctime>   
+ #include "Timer.h"
+ #include <ctime>   
 
-Timer::Timer() {
+Timer::Timer() : running(false), startTime(0), endTime(0) {}
 
-    running = false;
- }
 
- void Timer::start() {
+  void Timer::start() {
 
-      startTime = clock();  
+      startTime = clock();
       running = true;
- }
-
-  void Timer::stop() {
-
-       endTime = clock();    
-       running = false;
   }
 
-   double Timer::getElapsedSeconds() const {
 
-        clock_t currentTime;
+    void Timer::stop() {
 
-        if (running) {
+      endTime = clock();
+      running = false;
+  }
 
-              currentTime = clock();
-       } 
-       else {
 
-              currentTime = endTime;
-        }
+      double Timer::getElapsedSeconds() const {
 
-           return double(currentTime - startTime) / CLOCKS_PER_SEC;
-    }
+         clock_t currentTime = running ? clock() : endTime;
+         return double(currentTime - startTime) / CLOCKS_PER_SEC;
 
-       double Timer::getElapsedMilliseconds() const {
+  }
 
-            return getElapsedSeconds() * 1000.0;
-    }
+ 
+         double Timer::getElapsedMilliseconds() const {
 
-     void Timer::reset() {
+             return getElapsedSeconds() * 1000.0;
 
-           running = false;
-    }
+         }
+
+
+          void Timer::reset() {
+          running = false;
+          startTime = 0;
+           endTime = 0;
+
+      }
