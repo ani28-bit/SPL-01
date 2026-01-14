@@ -2,6 +2,7 @@
 #define MUTATION_H
 
 #include "../TSP/Tour.h"
+#include<string>
 
 class Mutation {
 
@@ -19,7 +20,9 @@ class Mutation {
          static void scrambleMutation(Tour& tour);
     
     
-           static void applyMutation(Tour& tour, double mutationRate);
-    };
+           static void applyMutation(Tour& tour, double mutationRate, std::string& mutationName);
 
-           #endif
+
+        };
+
+        #endif
