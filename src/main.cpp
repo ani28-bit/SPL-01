@@ -2,7 +2,6 @@
  #include <fstream>
  #include <sstream>
  #include <cmath>
- #include <vector>
  #include <cstdlib>
  #include <ctime>
  #include "TSP/City.h"
