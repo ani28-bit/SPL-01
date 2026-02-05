@@ -10,22 +10,21 @@ private:
     int numCities;
     double** distanceMatrix;
     
-    // Build distance matrix
+    
     void buildDistanceMatrix();
     
-    // Free memory
+   
     void freeDistanceMatrix();
 
-public:
+ public:
+ 
     CplexSolver(City cities[], int numCities);
     ~CplexSolver();
     
-    // Solve TSP using CPLEX
-    // Returns: optimal distance, fills optimalTour array
+   
     double solve(int optimalTour[], double timeLimit = 300.0);
     
-    // Check if CPLEX is available
     static bool isCplexAvailable();
-};
+  };
 
-#endif
+  #endif
