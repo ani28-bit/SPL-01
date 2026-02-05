@@ -5,20 +5,20 @@
 
 class Comparison {
 public:
-    // Compare GA and CPLEX results
+    
     static void compareResults(const Tour& gaTour, double gaDistance,
-                              const int cplexTour[], double cplexDistance,
-                              int numCities);
+                               const int cplexTour[], double cplexDistance,
+                               int numCities);
     
-    // Save comparison to file
+    
     static void saveComparison(const Tour& gaTour, double gaDistance,
-                              const int cplexTour[], double cplexDistance,
-                              int numCities,
-                              double gaTime, double cplexTime,
-                              const char* filename = "CPLEX/Summary.txt");
+                               const int cplexTour[], double cplexDistance,
+                               int numCities,
+                               double gaTime, double cplexTime,
+                               const char* filename = "CPLEX/Summary.txt");
     
-    // Calculate optimality gap
+    
     static double calculateGap(double gaDistance, double optimalDistance);
-};
+ };
 
-#endif
+  #endif
