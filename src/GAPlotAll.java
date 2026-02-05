@@ -38,14 +38,14 @@
 
                      if (cities.isEmpty()) {
 
-                              System.err.println("ERROR: No cities loaded! Check cities.txt");
+                              System.err.println(" No cities loaded! Check cities.txt");
                                   return;
 
                        }
 
                        if (bestTour.isEmpty()) {
 
-                                System.err.println("ERROR: No tour loaded! Check ga_results.csv");
+                                System.err.println(" No tour loaded! Check ga_results.csv");
                                   return;
 
                            }
@@ -179,7 +179,7 @@
 
                                    if (parts.length < 3) {
 
-                                        System.err.println("WARNING: Line " + lineNum + " has less than 3 columns, skipping");
+                                        System.err.println("Line " + lineNum + " has less than 3 columns, skipping");
                                           continue;
 
                                   }
@@ -275,7 +275,7 @@
         
                     if (tour.isEmpty()) {
 
-                                    System.err.println("WARNING: No tour found in " + filename);
+                                    System.err.println(" No tour found in " + filename);
                                }
         
                                     return tour;
