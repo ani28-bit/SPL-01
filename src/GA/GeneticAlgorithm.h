@@ -27,10 +27,10 @@ private:
       public:
   
              GeneticAlgorithm(City cities[], int numCities,
-                               int popSize = 100,
+                               int popSize = 99,
                                 int gens = 500,
-                                 double crossRate = 0.8,
-                                  double mutRate = 0.02,
+                                 double crossRate = 0.9,
+                                  double mutRate = 0.05,
                                    int elitism = 2,
                                     int tournSize = 5);
 
