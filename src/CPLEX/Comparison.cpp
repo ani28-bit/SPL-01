@@ -69,7 +69,7 @@
           void Comparison::saveComparison(const Tour& gaTour, double gaDistance,
                                            const int cplexTour[], double cplexDistance,
                                             int numCities, double gaTime, 
-                                            double cplexTime,const char* filename) {
+                                             double cplexTime,const char* filename) {
     
                         ofstream file(filename);
 
