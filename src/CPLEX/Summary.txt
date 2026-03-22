@@ -1,0 +1,25 @@
+
+ GA vs CPLEX comparison report
+
+Problem Size:
+  Cities: 15
+
+Genetic Algorithm Result:
+  Distance: 210.62
+  Execution Time: 0.80 seconds
+  Tour: 13 -> 8 -> 7 -> 6 -> 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 11 -> 10 -> 12 -> 14 -> 9 -> 13
+
+CPLEX (optimal) Results:
+  Distance: 210.62
+  Execution Time: 26.33 seconds
+  Tour: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 13 -> 9 -> 14 -> 12 -> 10 -> 11 -> 0
+
+Comparison Metrices:
+  Optimality Gap: 0.00%
+  Distance Difference: 0.00
+  Speed Ratio (CPLEX/GA): 33.09x
+
+Quality Assessment:
+ OPTIMAL - GA found the optimal solution!
+
+
