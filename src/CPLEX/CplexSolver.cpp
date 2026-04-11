@@ -208,9 +208,9 @@
                               }
     
             #else
-            cout << endl;
-            cout << "   CPLEX NOT AVAILABLE" << endl;
-            cout << endl;
+            std:: cout << endl;
+            std:: cout << "   CPLEX NOT AVAILABLE" << endl;
+            std:: cout << endl;
             
             return -1.0;
             #endif
