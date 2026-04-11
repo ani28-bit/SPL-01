@@ -30,7 +30,7 @@ bool loadCitiesFromFile(const string& filename, City cities[], int &numCities) {
     while (getline(file, line)) {
         istringstream iss(line);
 
-        if (!(iss >> x >> y)) {
+        int id; if (!(iss >> id >> x >> y)) {
             continue;
         }
         cities[numCities] = City(numCities, x, y);
