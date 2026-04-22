@@ -68,7 +68,7 @@
     
                if (size < 2){
 
-                 return;
+                     return;
                } 
     
    
@@ -77,7 +77,7 @@
     
               while (fromPos == toPos) {
 
-                    toPos = rand() % size;
+                        toPos = rand() % size;
            }
     
    
@@ -88,16 +88,16 @@
 
                  for (int i = fromPos; i < toPos; i++) {
 
-                      City temp = tour.getCity(i + 1);
-                      tour.getCity(i) = temp;
+                         City temp = tour.getCity(i + 1);
+                         tour.getCity(i) = temp;
                 }
             } 
             else {
 
                      for (int i = fromPos; i > toPos; i--) {
 
-                        City temp = tour.getCity(i - 1);
-                        tour.getCity(i) = temp;
+                              City temp = tour.getCity(i - 1);
+                              tour.getCity(i) = temp;
                    }
                 }
     
@@ -113,7 +113,7 @@
     
                if (size < 2){
 
-                   return;
+                      return;
               } 
     
    
@@ -122,22 +122,22 @@
     
               if (start > end) {
 
-                  std::swap(start, end);
+                      std::swap(start, end);
               }
     
     
              if (end - start < 1) {
 
-                  end = (start + 1) % size;
+                      end = (start + 1) % size;
               }
     
     
               for (int i = end; i > start; i--) {
 
-                   int j = start + rand() % (i - start + 1);
+                      int j = start + rand() % (i - start + 1);
 
-                   tour.swapCities(i, j);
-             }
+                      tour.swapCities(i, j);
+              }
          }
 
 
