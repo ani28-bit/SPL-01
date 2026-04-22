@@ -43,7 +43,7 @@
     
     
             for (int i = 0; i < size; i++) {
-             used[i] = false;
+                    used[i] = false;
           }
     
    
@@ -58,9 +58,9 @@
   
            for (int i = start; i <= end; i++) {
 
-              childCities[i] = parent1.getCity(i);
+                   childCities[i] = parent1.getCity(i);
 
-              used[parent1.getCity(i).getId()] = true;
+                   used[parent1.getCity(i).getId()] = true;
           }
     
     
@@ -69,7 +69,7 @@
     
          while (currentPos != start) {
 
-         City city = parent2.getCity(parent2Pos);
+                  City city = parent2.getCity(parent2Pos);
         
          if (!used[city.getId()]) {
 
@@ -100,7 +100,7 @@
     
                for (int i = 0; i < size; i++) {
 
-                childCities[i] = parent1.getCity(i);
+                      childCities[i] = parent1.getCity(i);
            }
     
     
@@ -109,7 +109,7 @@
     
                   if (start > end) {
 
-                     std::swap(start, end);
+                         std::swap(start, end);
               }
     
     
@@ -117,7 +117,7 @@
 
                for (int i = 0; i < size; i++) {
 
-                mapping[i] = i; 
+                      mapping[i] = i; 
             }
     
     
@@ -130,8 +130,8 @@
            
             for (int j = 0; j < size; j++) {
                 if (childCities[j].getId() == p2Id) {
-                    std::swap(childCities[i], childCities[j]);
-                    break;
+                        std::swap(childCities[i], childCities[j]);
+                        break;
                 }
             }
         }
@@ -155,7 +155,7 @@
     
                for (int i = 0; i < size; i++) {
 
-                 taken[i] = false;
+                       taken[i] = false;
          }
     
    
@@ -216,14 +216,14 @@
 
             if (choice == 0) {
 
-                 crossoverName = "Order Crossover";
+                   crossoverName = "Order Crossover";
                    child = orderCrossover(parent1, parent2);
             }
 
            else if (choice == 1) {
 
-                  crossoverName = "PMX Crossover";
-                  child = pmxCrossover(parent1, parent2);
+                     crossoverName = "PMX Crossover";
+                     child = pmxCrossover(parent1, parent2);
 
              }
 
