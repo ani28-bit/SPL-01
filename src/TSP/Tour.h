@@ -6,7 +6,9 @@
 #define MAX_CITIES 100
 
  class Tour {
+
   private:
+  
      City cities[MAX_CITIES];
      int cityCount;
      double distance;
@@ -76,6 +78,6 @@
           void printTour() const;
           void printDetailed()const;
        
-};
+     };
 
 #endif
