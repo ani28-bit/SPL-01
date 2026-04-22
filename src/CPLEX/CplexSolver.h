@@ -5,7 +5,9 @@
 #include "../TSP/Tour.h"
 
 class CplexSolver {
+
 private:
+
     City* cities;
     int numCities;
     double** distanceMatrix;
@@ -18,7 +20,7 @@ private:
 
  public:
  
-    CplexSolver(City cities[], int numCities);
+     CplexSolver(City cities[], int numCities);
     ~CplexSolver();
     
    
