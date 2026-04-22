@@ -8,7 +8,7 @@ Tour Selection::tournamentSelection(Tour population[],int populationSize,int tou
 
          if(tournamentSize > populationSize){
 
-               tournamentSize = populationSize;
+                 tournamentSize = populationSize;
          }
 
 
