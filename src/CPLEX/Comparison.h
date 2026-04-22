@@ -4,6 +4,7 @@
 #include "../TSP/Tour.h"
 
 class Comparison {
+    
 public:
     
     static void compareResults(const Tour& gaTour, double gaDistance,
@@ -13,8 +14,7 @@ public:
     
     static void saveComparison(const Tour& gaTour, double gaDistance,
                                const int cplexTour[], double cplexDistance,
-                               int numCities,
-                               double gaTime, double cplexTime,
+                               int numCities,double gaTime, double cplexTime,
                                const char* filename = "CPLEX/Summary.txt");
     
     
