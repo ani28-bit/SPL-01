@@ -1,181 +1,168 @@
- #include "Comparison.h"
- #include <iostream>
- #include <fstream>
- #include <iomanip>
- #include <cmath>
+#include "Comparison.h"
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cmath>
 
- using namespace std;
+using namespace std;
 
-  void Comparison::compareResults(const Tour& gaTour, double gaDistance,
-                                  const int cplexTour[], double cplexDistance,
-                                   int numCities) {
-    
-    
-    cout << "   GA vs CPLEX comparison " << endl;
-     cout  << endl;
-    
+void Comparison::compareResults(const Tour& gaTour, double gaDistance,
+                                const int cplexTour[], double cplexDistance,
+                                int numCities) {
+
+    cout << "   GA vs CPLEX Comparison " << endl;
+    cout << endl;
+
     cout << fixed << setprecision(2);
-    
-     cout << "\nGA Result:" << endl;
-     cout << "  Distance: " << gaDistance << endl;
-     cout << "  Tour: ";
-     gaTour.printTour();
-    
+
+    cout << "\nGA Result:" << endl;
+    cout << "  Distance: " << gaDistance << endl;
+    cout << "  Tour: ";
+    gaTour.printTour();
+
     cout << "\nCPLEX Result:" << endl;
     cout << "  Distance: " << cplexDistance << endl;
     cout << "  Tour: ";
 
     for (int i = 0; i < numCities; i++) {
 
-             cout << cplexTour[i];
+               cout << cplexTour[i];
 
-             if (i < numCities - 1) {
-
-                   cout << " -> ";
-             }
+        if (i < numCities - 1) {
+               cout << " -> ";
         }
+    }
+       cout << " -> " << cplexTour[0] << endl;
 
-        cout << " -> " << cplexTour[0] << endl;
-    
-        double gap = calculateGap(gaDistance, cplexDistance);
-    
-         cout << "\nComparison:" << endl;
-         cout << "  Optimality Gap: " << gap << "%" << endl;
-    
-           if (gap < 0.01) {
+      double gap = calculateGap(gaDistance, cplexDistance);
 
-                    cout << " GA found OPTIMAL solution!" << endl;
+      cout << "\nComparison:" << endl;
+      cout << "  Optimality Gap: " << gap << "%" << endl;
 
-            } 
-            else if (gap < 5.0) {
+    if (gap < 0.01) {
 
-                     cout << "GA found EXCELLENT solution (< 5% gap)" << endl;
+          cout << "GA found OPTIMAL solution!" << endl;
 
-            } 
-             else if (gap < 10.0) {
+        } 
+    else if (gap < 5.0) {
 
-                          cout << "GA found Good solution (< 10% gap)" << endl;
+              cout << "GA found EXCELLENT solution (< 5% gap)" << endl;
+       } 
+     else if (gap < 10.0) {
 
-                } 
-              else {
+                cout << "GA found GOOD solution (< 10% gap)" << endl;
+           }
 
-                          cout << " GA solution has " << gap << "% gap from optimal" << endl;
+      else {
 
-                  } 
-    
-                           cout << endl;
-             }
+                cout << "GA solution has " << gap << "% gap from optimal" << endl;
+          }
 
-          void Comparison::saveComparison(const Tour& gaTour, double gaDistance,
-                                           const int cplexTour[], double cplexDistance,
-                                            int numCities, double gaTime, 
-                                             double cplexTime,const char* filename) {
-    
-                        ofstream file(filename);
+                cout << endl;
+      }
 
-                         if (!file.is_open()) {
+ void Comparison::saveComparison(const Tour& gaTour, double gaDistance,
+                                const int cplexTour[], double cplexDistance,
+                                int numCities, double gaTime,
+                                double cplexTime, const char* filename) {
 
-                                 cout << "Could not save comparison to " << filename << endl;
-                                  return ;
+    ofstream file(filename);
 
+    if (!file.is_open()) {
+          cout << "Could not save comparison to " << filename << endl;
+          return;
+    }
 
-                      }
-    
-                           file << endl;
-                           file << " GA vs CPLEX comparison report\n";
+    file << endl;
+    file << " GA vs CPLEX Comparison Report\n";
+    file << endl;
 
-                           file << endl;
-    
-                           file << fixed << setprecision(2);
-    
-                           file << "Problem Size:\n";
-                           file << "  Cities: " << numCities << "\n\n";
-    
-                           file << "Genetic Algorithm Result:\n";
+    file << fixed << setprecision(2);
 
-                           file << "  Distance: " << gaDistance << "\n";
-                           file << "  Execution Time: " << gaTime << " seconds\n";
-                           file << "  Tour: ";
+    file << "Problem Size:\n";
+    file << "  Cities: " << numCities << "\n\n";
 
-                        for (int i = 0; i < gaTour.getCityCount(); i++) {
+    file << "Genetic Algorithm Result:\n";
+    file << "  Distance: " << gaDistance << "\n";
+    file << "  Execution Time: " << gaTime << " seconds\n";
+    file << "  Tour: ";
 
-                                file << gaTour.getCity(i).getId();
+    for (int i = 0; i < gaTour.getCityCount(); i++) {
 
-                                   if (i < gaTour.getCityCount() - 1) {
+              file << gaTour.getCity(i).getId();
 
-                                               file << " -> ";
-                                   }
-                               }
+        if (i < gaTour.getCityCount() - 1) {
 
-                           file << " -> " << gaTour.getCity(0).getId() << "\n\n";
-    
-                           file << "CPLEX (optimal) Results:\n";
-                           file << "  Distance: " << cplexDistance << "\n";
-                           file << "  Execution Time: " << cplexTime << " seconds\n";
-                           file << "  Tour: ";
+              file << " -> ";
+        }
+    }
+    file << " -> " << gaTour.getCity(0).getId() << "\n\n";
 
-                              for (int i = 0; i < numCities; i++) {
+    file << "CPLEX (optimal) :\n";
+    file << "  Distance: " << cplexDistance << "\n";
+    file << "  Execution Time: " << cplexTime << " seconds\n";
+    file << "  Tour: ";
 
-                                       file << cplexTour[i];
-                                        if (i < numCities - 1) {
+    for (int i = 0; i < numCities; i++) {
 
-                                                file << " -> ";
-                                        }
-                                    }
+            file << cplexTour[i];
 
-                               file << " -> " << cplexTour[0] << "\n\n";
-    
-                               double gap = calculateGap(gaDistance, cplexDistance);
-    
-                              file << "Comparison Metrices:\n";
-                              file << "  Optimality Gap: " << gap << "%\n";
-                              file << "  Distance Difference: " << (gaDistance - cplexDistance) << "\n";
-                              file << "  Speed Ratio (CPLEX/GA): " << (cplexTime / gaTime) << "x\n\n";
-    
-                              file << "Quality Assessment:\n";
+        if (i < numCities - 1) {
 
-                               if (gap < 0.01) {
+            file << " -> ";
+        }
+    }
+            file << " -> " << cplexTour[0] << "\n\n";
 
-                                            file << " OPTIMAL - GA found the optimal solution!\n";
+    double gap = calculateGap(gaDistance, cplexDistance);
 
-                                } 
-                                else if (gap < 1.0) {
+    file << "Comparison Metrics:\n";
+    file << "  Optimality Gap: " << gap << "%\n";
+    file << "  Distance Difference: " << (gaDistance - cplexDistance) << "\n";
+    file << "  Speed Ratio (CPLEX/GA): " << (cplexTime / gaTime) << "x\n\n";
 
-                                             file << " Excelent - Gap < 1%\n";
-                                        } 
-                                        else if (gap < 5.0) {
+    file << "Quality Assessment:\n";
 
-                                                    file << " Very Good- Gap < 5%\n";
+    if (gap < 0.01) {
 
-                                          } 
-                                          else if (gap < 10.0) {
+            file << "OPTIMAL - GA found the optimal solution!\n";
+    }
+     else if (gap < 1.0) {
 
-                                                        file << "Good - Gap < 10%\n";
-                                                  } 
-                                                  else {
+           file << "Excellent - Gap < 1%\n";
+    } 
+    else if (gap < 5.0) {
 
-                                                        file << " Acceptable- Gap > 10%\n";
+          file << "Very Good - Gap < 5%\n";
+    } 
+    else if (gap < 10.0) {
+         
+          file << "Good - Gap < 10%\n";
+    }
+     else {
 
-                                                  }
-    
-                                     file << "\n\n";
-                                     file.close();
-    
-                                        cout << " Comparison saved to: " << filename << endl;
-                          }
+          file << "Acceptable - Gap > 10%\n";
+    }  
 
-                           double Comparison::calculateGap(double gaDistance, double optimalDistance) {
+         file << "\n\n";
+         file.close();
 
-                             if (optimalDistance <= 0.0) {
-                                      return 0.0;
-                             }
+         cout << "Comparison saved to: " << filename << endl;
+  }
 
-                             double gap = ((gaDistance - optimalDistance) / optimalDistance) * 100.0;
+ double Comparison::calculateGap(double gaDistance, double optimalDistance) {
 
-   
-                              if (fabs(gap) < 1e-6){
-                                     gap = 0.0;
-                              }
+    if (optimalDistance <= 0.0) {
 
-                              return gap;
-             }
+           return 0.0;
+      }
+
+    double gap = (fabs(gaDistance - optimalDistance) / optimalDistance) * 100.0;
+
+    if (gap < 1e-6) {
+
+          gap = 0.0;
+     }
+
+       return gap;
+ }
