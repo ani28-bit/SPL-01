@@ -39,7 +39,7 @@ private:
                                    void run();             
                                     Tour getBestTour() const;
                                      double getBestDistance() const;
-                                     void printResults() const;
+
 
                   };
 
