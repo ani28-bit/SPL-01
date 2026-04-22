@@ -62,6 +62,7 @@
                                      bool CplexSolver::isCplexAvailable() {
 
                                                 #ifdef USE_CPLEX
+
                                                         return true;
                                                 #else
                                                         return false;
@@ -167,7 +168,7 @@
                            for (int i = 0; i < numCities; i++) {
 
                                        visited[i] = false;
-                           }
+                             }
             
                           for (int step = 0; step < numCities; step++) {
 
@@ -209,7 +210,7 @@
     
             #else
             std:: cout << endl;
-            std:: cout << "   CPLEX NOT AVAILABLE" << endl;
+            std:: cout << "   CPLEX Not Available" << endl;
             std:: cout << endl;
             
             return -1.0;
