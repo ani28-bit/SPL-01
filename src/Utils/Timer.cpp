@@ -20,15 +20,26 @@ Timer::Timer() : running(false), startTime(0), endTime(0) {}
 
       double Timer::getElapsedSeconds() const {
 
-         clock_t currentTime = running ? clock() : endTime;
-         return double(currentTime - startTime) / CLOCKS_PER_SEC;
+         clock_t currentTime;
 
-  }
+              if (running) {
+
+                     currentTime = clock();
+             }
+
+            else {
+
+                     currentTime = endTime;
+              }
+
+                  return double(currentTime - startTime) / CLOCKS_PER_SEC;
+
+         }
 
  
          double Timer::getElapsedMilliseconds() const {
 
-             return getElapsedSeconds() * 1000.0;
+                  return getElapsedSeconds() * 1000.0;
 
          }
 
