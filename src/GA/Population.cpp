@@ -36,7 +36,7 @@
 
          if (size == 0){
             
-            return nullptr;
+                 return nullptr;
 
          }
     
@@ -45,13 +45,13 @@
       double bestDistance = tours[0].getDistance();
     
        for (int i = 1; i < size; ++i) {
-
-          double dist = tours[i].getDistance();
+  
+                   double dist = tours[i].getDistance();
 
            if (dist < bestDistance) {
 
-               bestDistance = dist;
-               best = &tours[i];
+                    bestDistance = dist;
+                    best = &tours[i];
         }
     }
     
@@ -60,37 +60,38 @@
 
   Tour* Population::getWorst(){
       if(size == 0){
-         return nullptr;
+            return nullptr;
       }
 
       Tour* worst = &tours[0];
        double worstDistance = tours[0].getDistance();
 
        for(int i=1;i<size;++i){
-          double dist = tours[i].getDistance();
+              double dist = tours[i].getDistance();
 
           if(dist > worstDistance){
-              worstDistance = dist;
-              worst = &tours[i];
+                 worstDistance = dist;
+                 worst = &tours[i];
           }
        }
-       return worst;
+                 return worst;
   }
 
      double Population::getAvgFitness() const{
+
           if(size == 0){
 
-            return 0.0;
+                 return 0.0;
           }
 
           double sum = 0.0;
 
           for(int i=0;i<size;++i){
 
-              sum+= tours[i].getDistance();
+                  sum+= tours[i].getDistance();
           }
 
-          return sum/size;
+               return sum/size;
      }
 
         void Population:: sortByFitness(){
@@ -106,7 +107,4 @@
               }
          }
      }
- 
-
-
  
