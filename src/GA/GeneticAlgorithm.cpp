@@ -63,14 +63,14 @@ GeneticAlgorithm::GeneticAlgorithm(City cities[], int numCities,int popSize,
         
                                for (int i = 0; i < elitismCount; i++){
 
-                                  newTours[i] = (*population)[i];
+                                        newTours[i] = (*population)[i];
 
                                }
 
                                     for (int i = elitismCount; i < populationSize; i++){
 
-                                          string crossUsed, mutUsed;
-                                           newTours[i] = createOffspring(population, crossUsed, mutUsed);
+                                              string crossUsed, mutUsed;
+                                              newTours[i] = createOffspring(population, crossUsed, mutUsed);
 
             
                                        if (crossUsed == "Order"){
@@ -117,16 +117,16 @@ GeneticAlgorithm::GeneticAlgorithm(City cities[], int numCities,int popSize,
 
                          for (int i = 0; i < populationSize; i++) {
 
-                             City* temp = new City[numCities];
+                                  City* temp = new City[numCities];
 
-                              for (int j = 0; j < numCities; j++){
+                                for (int j = 0; j < numCities; j++){
 
-                               temp[j] = newTours[i].getCity(j);
+                                       temp[j] = newTours[i].getCity(j);
 
                          }
 
                                (*newPopulation)[i].setCities(temp, numCities);
-                                  delete[] temp;
+                                   delete[] temp;
 
                  }
 
@@ -138,7 +138,7 @@ GeneticAlgorithm::GeneticAlgorithm(City cities[], int numCities,int popSize,
                         Tour* currentBest = population->getBest();
                         if (currentBest->getDistance() < bestDistance){
 
-                               bestDistance = currentBest->getDistance();
+                                bestDistance = currentBest->getDistance();
                                 bestTour = *currentBest;
                   }
 
@@ -193,8 +193,8 @@ GeneticAlgorithm::GeneticAlgorithm(City cities[], int numCities,int popSize,
 
                                 else if (type == 1) {
 
-                                    child = Crossover::pmxCrossover(p1, p2);
-                                    crossoverUsed = "PMX";
+                                     child = Crossover::pmxCrossover(p1, p2);
+                                     crossoverUsed = "PMX";
 
                              }
                                
