@@ -23,7 +23,7 @@ void Tour :: calculateDistance(){
 
         for(int i = 0;i < cityCount;i++){
 
-        cities[i]= other.cities[i];
+              cities[i]= other.cities[i];
      }
  }
 
@@ -37,7 +37,7 @@ void Tour :: calculateDistance(){
 
         for (int i = 0; i < cityCount; ++i) {
 
-             cities[i] = other.cities[i];
+                 cities[i] = other.cities[i];
          }
      }
 
@@ -49,17 +49,17 @@ void Tour :: calculateDistance(){
 
         if (n > MAX_CITIES) {
 
-        cout<< "Error" <<endl;
-        return;
+               cout<< "Error" <<endl;
+               return;
     }
 
       cityCount = n;
       for (int i = 0; i < n; ++i) {
 
-        cities[i] = c[i];
-    }
+             cities[i] = c[i];
+       }
 
-        calculateDistance();
+             calculateDistance();
   }
 
 
@@ -67,9 +67,9 @@ void Tour :: calculateDistance(){
 
     if (cityCount >= MAX_CITIES) {
 
-        cout<< "Error" <<endl;
+             cout<< "Error" <<endl;
 
-        return false;
+             return false;
     }
 
         cities[cityCount] = city;
@@ -86,20 +86,20 @@ void Tour :: calculateDistance(){
 
        if (idx < 0 || idx >= cityCount) {
 
-        cout<< " Invalid city index!" <<endl;
-        return false;
+                   cout<< " Invalid city index!" <<endl;
+                   return false;
 
      }
     
 
        for (int i = idx; i < cityCount - 1; ++i) {
 
-             cities[i] = cities[i + 1];
+                    cities[i] = cities[i + 1];
       }
 
-        cityCount--;
-        calculateDistance();
-        return true;
+            cityCount--;
+            calculateDistance();
+            return true;
    }
 
 
@@ -108,19 +108,19 @@ void Tour :: calculateDistance(){
           if (idx1 >= 0 && idx1 < cityCount && idx2 >= 0 && idx2 < cityCount) {
 
         
-               City temp = cities[idx1];
-               cities[idx1] = cities[idx2];
-               cities[idx2] = temp;
+                    City temp = cities[idx1];
+                    cities[idx1] = cities[idx2];
+                    cities[idx2] = temp;
 
-                calculateDistance();
+                    calculateDistance();
            }
      }
 
 
             void Tour::clear() {
 
-            cityCount = 0;
-            distance = 0.0;
+             cityCount = 0;
+             distance = 0.0;
    }
 
 
@@ -128,39 +128,39 @@ void Tour :: calculateDistance(){
 
          if (idx < 0 || idx >= cityCount) {
 
-         cout<< "Invalid city index!" <<endl;
+                  cout<< "Invalid city index!" <<endl;
 
-          static City dummy;
-          return dummy;
-       }
+                  static City dummy;
+                  return dummy;
+          }
 
-        return cities[idx];
-  }
+                  return cities[idx];
+    }
 
 
      const City& Tour::getCity(int idx) const {
 
          if (idx < 0 || idx >= cityCount) {
 
-         cout<< "Invalid city index!" <<endl;
+                cout<< "Invalid city index!" <<endl;
 
-          static City dummy;
-          return dummy;
-      }
+                 static City dummy;
+                 return dummy;
+        }
 
-          return cities[idx];
-  }
+                  return cities[idx];
+   }
 
 
        void Tour::setDistance(double d) {
 
-        distance = d;
-  }
+               distance = d;
+     }
 
 
-    void Tour::updateDistance() {
-        calculateDistance();
-  }
+        void Tour::updateDistance() {
+              calculateDistance();
+    }
 
 
   bool Tour::containsCity(const City& city) const {
@@ -168,26 +168,27 @@ void Tour :: calculateDistance(){
     for (int i = 0; i < cityCount; ++i) {
 
         if (cities[i].getId() == city.getId()) {
-            return true;
-        }
-    }
 
-    return false;
-}
+                 return true;
+            }
+       }
+
+                 return false;
+    }
 
 
   bool Tour::isValid() const {
 
     if (cityCount == 0) {
 
-        return false;
+             return false;
     }
     
     
     for (int i = 0; i < cityCount; ++i) {
         for (int j = i + 1; j < cityCount; ++j) {
             if (cities[i].getId() == cities[j].getId()) {
-                return false;
+                    return false;
             }
         }
     }
@@ -197,51 +198,51 @@ void Tour :: calculateDistance(){
 
         bool Tour::operator<(const Tour& other) const {
 
-        return distance < other.distance;
+                return distance < other.distance;
    }
 
         bool Tour::operator>(const Tour& other) const {
 
-        return distance > other.distance;
+                  return distance > other.distance;
     }
 
         bool Tour::operator==(const Tour& other) const {
 
-        return distance == other.distance;
+                  return distance == other.distance;
     }
 
         bool Tour::operator<=(const Tour& other) const {
 
-        return distance <= other.distance;
+                   return distance <= other.distance;
    }
  
         bool Tour::operator>=(const Tour& other) const {
 
-        return distance >= other.distance;
+                  return distance >= other.distance;
    }
 
 
        void Tour::printTour() const {
 
-              cout << "Tour: ";
+                  cout << "Tour: ";
 
         for (int i = 0; i < cityCount; ++i) {
 
-              cout << cities[i].getId();
+                  cout << cities[i].getId();
 
         if (i < cityCount - 1) {
 
-              cout << " -> ";
-        }
+                  cout << " -> ";
+        } 
     }
 
        if (cityCount > 0) {
 
-            cout << " -> " << cities[0].getId();
+               cout << " -> " << cities[0].getId();
 
        }
 
-            cout << " | Distance: " << distance << std::endl;
+               cout << " | Distance: " << distance << std::endl;
    }
 
        void Tour::printDetailed() const {
