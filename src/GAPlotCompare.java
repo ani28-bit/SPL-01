@@ -22,10 +22,9 @@ import java.util.List;
 
        public double x, y; public int id;
        public City(int id, double x, double y){
-          this.id=id; this.x=x; this.y=y; 
-       
+                     this.id=id; this.x=x; this.y=y; 
+       }
     }
- }
 
   public class GAPlotCompare {
 
@@ -41,12 +40,14 @@ import java.util.List;
 
         ArrayList<Integer> gaTour = loadTourFromSummary("CPLEX/Summary.txt", false);
 
-        if (gaTour.isEmpty()) gaTour = loadBestTourFromCSV("results/ga_results.csv");
 
+        if (gaTour.isEmpty()) {
+                gaTour = loadBestTourFromCSV("results/ga_results.csv");
+            }
         if (cities.isEmpty() || gaTour.isEmpty()) {
 
-            System.err.println("Error: data missing!");
-              return;
+                System.out.println("Error: data missing!");
+                return;
         }
 
        
@@ -78,7 +79,7 @@ import java.util.List;
         double bestAlt = Math.min(alt1Dist, Math.min(alt2Dist, alt3Dist));
         double improvement = (bestAlt - gaDist) / bestAlt * 100;
         String title = String.format(
-            "GA vs Alternative Heuristics  |  GA is %.2f%% better than best alternative", improvement);
+                    "GA vs Alternative Heuristics  |  GA is %.2f%% better than best alternative", improvement);
 
         JFreeChart chart = ChartFactory.createXYLineChart(
             title, "X", "Y", dataset, PlotOrientation.VERTICAL, true, false, false);
@@ -117,72 +118,165 @@ import java.util.List;
 
         plot.setRenderer(renderer);
 
-      
         HashSet<Integer> drawn = new HashSet<>();
-        for (int id : gaTour) {
-            if (drawn.contains(id)){
-                  continue;
-             }
-            City c = findCity(cities, id); 
-              if (c == null) {
-                   continue;
 
-              }
-            XYTextAnnotation ann = new XYTextAnnotation(String.valueOf(c.id), c.x+1.5, c.y+2.0);
-            ann.setFont(new Font("SansSerif", Font.BOLD, 12));
-            ann.setPaint(new Color(180, 0, 0));
-            ann.setTextAnchor(TextAnchor.BOTTOM_LEFT);
-            plot.addAnnotation(ann);
-            drawn.add(id);
-        }
+        for (int i = 0; i < gaTour.size(); i++) {
+
+                     int id = gaTour.get(i);
+
+                     if (drawn.contains(id)) {
+                            continue;
+                        }
+
+                     City c = findCity(cities, id);
+
+                      if (c == null) {
+                            continue;
+                        }
+
+    
+    XYTextAnnotation ann = new XYTextAnnotation(
+            String.valueOf(c.id),
+            c.x + 1.5,
+            c.y + 2.0
+    );
+    ann.setFont(new Font("SansSerif", Font.BOLD, 12));
+    ann.setPaint(new Color(180, 0, 0));
+    ann.setTextAnchor(TextAnchor.BOTTOM_LEFT);
+    plot.addAnnotation(ann);
+
+   
+    XYTextAnnotation seq = new XYTextAnnotation(
+            "GA:(" + (i + 1) + ")",
+            c.x - 2,
+            c.y - 3.0
+    );
+    seq.setFont(new Font("SansSerif", Font.PLAIN, 10));
+    seq.setPaint(new Color(0, 130, 0));
+    seq.setTextAnchor(TextAnchor.TOP_RIGHT);
+    plot.addAnnotation(seq);
+
+   
+    if (i == 0) {
+        XYTextAnnotation startLabel = new XYTextAnnotation(
+                "START",
+                c.x + 1.5,
+                c.y + 7
+        );
+        startLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        startLabel.setPaint(new Color(0, 150, 0));
+        startLabel.setTextAnchor(TextAnchor.BOTTOM_LEFT);
+        plot.addAnnotation(startLabel);
+    }
+
+       drawn.add(id);
+  }
 
         
         List<City[]> gaEdges = buildEdges(cities, gaTour);
+        List<City[]> alt1Edges = buildEdges(cities, alt1);
+        List<City[]> alt2Edges = buildEdges(cities, alt2);
+        List<City[]> alt3Edges = buildEdges(cities, alt3);
 
+       
         ChartPanel cp = new ChartPanel(chart, false) {
 
-            @Override public void paintComponent(Graphics g) {
+    @Override
+    public void paintComponent(Graphics g) {
 
-                super.paintComponent(g);
-                Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                Rectangle2D area = getChartRenderingInfo().getPlotInfo().getDataArea();
-                ValueAxis da = plot.getDomainAxis(), ra = plot.getRangeAxis();
-                Font font = new Font("SansSerif", Font.BOLD, 10);
-                g2.setFont(font);
-                FontMetrics fm = g2.getFontMetrics(font);
+         super.paintComponent(g);
 
-                for (City[] edge : gaEdges) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
 
-                    City a = edge[0], b = edge[1];
-                    double ax = da.valueToJava2D(a.x, area, plot.getDomainAxisEdge());
-                    double ay = ra.valueToJava2D(a.y, area, plot.getRangeAxisEdge());
-                    double bx = da.valueToJava2D(b.x, area, plot.getDomainAxisEdge());
-                    double by_ = ra.valueToJava2D(b.y, area, plot.getRangeAxisEdge());
+        Rectangle2D area = getChartRenderingInfo().getPlotInfo().getDataArea();
+        ValueAxis da = plot.getDomainAxis();
+        ValueAxis ra = plot.getRangeAxis();
 
-                    double mx=(ax+bx)/2.0, my=(ay+by_)/2.0;
-                    double edgeAngle = Math.abs((by_-ay)/(Math.abs(bx-ax)+0.001));
-                    double lx = edgeAngle > 1.5 ? mx+20 : mx;
-                    double ly = edgeAngle > 1.5 ? my : my-14;
-                    double dist = Math.hypot(b.x-a.x, b.y-a.y);
+        Font font = new Font("SansSerif", Font.BOLD, 10);
+        g2.setFont(font);
+        FontMetrics fm = g2.getFontMetrics(font);
 
-                    String label = String.format("%.1f", dist);
-                    int tw=fm.stringWidth(label), th=fm.getAscent(), pad=2;
-                    int bx2=(int)(lx-tw/2.0-pad), by2=(int)(ly-th/2.0-pad);
+        
+        for (City[] edge : gaEdges) {
 
-                    g2.setColor(new Color(0,120,0,150));
-                    g2.setStroke(new BasicStroke(1f,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND,1f,new float[]{2f,2f},0f));
-                    g2.drawLine((int)mx,(int)my,(int)lx,(int)ly);
-                    g2.setStroke(new BasicStroke(1f));
-                    g2.setColor(new Color(0,110,0));
+              City a = edge[0], b = edge[1];
 
-                    g2.fillRoundRect(bx2,by2,tw+pad*2,th+pad*2,4,4);
-                    g2.setColor(Color.WHITE);
-                    g2.drawString(label,bx2+pad,by2+th+pad/2);
-                }
-                g2.dispose();
-            }
-        };
+            double ax = da.valueToJava2D(a.x, area, plot.getDomainAxisEdge());
+            double ay = ra.valueToJava2D(a.y, area, plot.getRangeAxisEdge());
+            double bx = da.valueToJava2D(b.x, area, plot.getDomainAxisEdge());
+            double by = ra.valueToJava2D(b.y, area, plot.getRangeAxisEdge());
+
+            double mx = (ax + bx) / 2.0;
+            double my = (ay + by) / 2.0;
+
+            double dist = Math.hypot(b.x - a.x, b.y - a.y);
+            String label = String.format("%.1f", dist);
+
+            int tw = fm.stringWidth(label);
+            int th = fm.getAscent();
+            int pad = 2;
+
+            int bx2 = (int)(mx - tw/2.0 - pad);
+            int by2 = (int)(my - th/2.0 - pad);
+
+            g2.setColor(new Color(0,120,0,150));
+            g2.drawLine((int)mx, (int)my, bx2, by2);
+
+            g2.setColor(new Color(0,110,0));
+            g2.fillRoundRect(bx2, by2, tw + pad*2, th + pad*2, 4, 4);
+
+            g2.setColor(Color.WHITE);
+            g2.drawString(label, bx2 + pad, by2 + th);
+
+            drawArrow(g2, ax, ay, bx, by, COLOR_GA);
+        }
+
+        for (City[] edge : alt1Edges) {
+
+              City a = edge[0], b = edge[1];
+
+            double ax = da.valueToJava2D(a.x, area, plot.getDomainAxisEdge());
+            double ay = ra.valueToJava2D(a.y, area, plot.getRangeAxisEdge());
+            double bx = da.valueToJava2D(b.x, area, plot.getDomainAxisEdge());
+            double by = ra.valueToJava2D(b.y, area, plot.getRangeAxisEdge());
+
+            drawArrow(g2, ax, ay, bx, by, COLOR_ALT1);
+        }
+
+        
+        for (City[] edge : alt2Edges) {
+
+              City a = edge[0], b = edge[1];
+
+            double ax = da.valueToJava2D(a.x, area, plot.getDomainAxisEdge());
+            double ay = ra.valueToJava2D(a.y, area, plot.getRangeAxisEdge());
+            double bx = da.valueToJava2D(b.x, area, plot.getDomainAxisEdge());
+            double by = ra.valueToJava2D(b.y, area, plot.getRangeAxisEdge());
+
+            drawArrow(g2, ax, ay, bx, by, COLOR_ALT2);
+        }
+
+        
+        for (City[] edge : alt3Edges) {
+
+               City a = edge[0], b = edge[1];
+
+            double ax = da.valueToJava2D(a.x, area, plot.getDomainAxisEdge());
+            double ay = ra.valueToJava2D(a.y, area, plot.getRangeAxisEdge());
+            double bx = da.valueToJava2D(b.x, area, plot.getDomainAxisEdge());
+            double by = ra.valueToJava2D(b.y, area, plot.getRangeAxisEdge());
+
+            drawArrow(g2, ax, ay, bx, by, COLOR_ALT3);
+          }
+
+           g2.dispose();
+      }
+  };
+ 
+
+
          cp.setMouseWheelEnabled(false); 
           cp.setDomainZoomable(false);
            cp.setRangeZoomable(false);
@@ -191,10 +285,10 @@ import java.util.List;
         JPanel info = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 6));
         info.setBackground(Color.WHITE);
         info.setBorder(new EmptyBorder(6,4,6,4));
-        info.add(makeLabel("■ GA Best  dist: " + String.format("%.2f", gaDist) + "  ★ BEST", COLOR_GA, true));
-        info.add(makeLabel("- - Alt 1 (NN)  dist: " + String.format("%.2f", alt1Dist), COLOR_ALT1, false));
-        info.add(makeLabel("- - Alt 2 (NN)  dist: " + String.format("%.2f", alt2Dist), COLOR_ALT2, false));
-        info.add(makeLabel("- - Alt 3 (NN)  dist: " + String.format("%.2f", alt3Dist), COLOR_ALT3, false));
+        info.add(makeLabel(" GA Best  dist: " + String.format("%.2f", gaDist) + "  ★ BEST", COLOR_GA, true));
+        info.add(makeLabel(" Alt 1 (NN)  dist: " + String.format("%.2f", alt1Dist), COLOR_ALT1, false));
+        info.add(makeLabel(" Alt 2 (NN)  dist: " + String.format("%.2f", alt2Dist), COLOR_ALT2, false));
+        info.add(makeLabel(" Alt 3 (NN)  dist: " + String.format("%.2f", alt3Dist), COLOR_ALT3, false));
 
         SwingUtilities.invokeLater(() -> {
 
@@ -214,9 +308,19 @@ import java.util.List;
         ArrayList<Integer> tour = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
 
-            String line; boolean inSection = false;
-            String marker = isCplex ? "CPLEX (optimal)" : "Genetic Algorithm Result";
-            while ((line = br.readLine()) != null) {
+            String line; 
+            boolean inSection = false;
+            String marker;
+           
+            if (isCplex) {
+                  marker = "CPLEX (optimal)";
+             }
+              else {
+
+                    marker = "Genetic Algorithm Result";
+               }
+
+               while ((line = br.readLine()) != null){
 
                 if (line.contains(marker)) {
                        inSection = true; 
@@ -229,8 +333,11 @@ import java.util.List;
 
                     for (String t : routePart.split("->")) {
 
-                        t = t.trim(); if (t.isEmpty()) 
-                             continue;
+                        t = t.trim(); 
+
+                        if (t.isEmpty()){ 
+                               continue;
+                        }
                         try { 
                               tour.add(Integer.parseInt(t));
 
@@ -240,19 +347,20 @@ import java.util.List;
                 }
 
                 if (inSection && line.contains("Comparison")) 
-                  break;
+                     break;
             }
          } 
            catch (IOException e) { 
             
-                     System.err.println("Cannot read " + f);
-        
-      }
-        if (!tour.isEmpty() && !tour.get(0).equals(tour.get(tour.size()-1)))
+                     System.out.println("Cannot read " + f);    
+                 }
 
-            tour.add(tour.get(0));
-            return tour;
- }
+        if (!tour.isEmpty() && !tour.get(0).equals(tour.get(tour.size()-1))){
+ 
+              tour.add(tour.get(0));
+         }
+              return tour;
+        }
 
     static ArrayList<Integer> loadBestTourFromCSV(String f) {
 
@@ -264,24 +372,27 @@ import java.util.List;
 
                 if (!line.contains("Final Best Tour")){
 
-                      continue;
+                        continue;
                 }
 
                 int idx = line.lastIndexOf("Tour:");
 
                 if (idx < 0){
 
-                    continue;
+                     continue;
                 }
                 String part = line.substring(idx+5);
                 int pipe = part.indexOf('|');
 
                  if (pipe >= 0) {
-                      part = part.substring(0, pipe);
+                        part = part.substring(0, pipe);
                  } 
                 for (String t : part.split("->")) {
-                     t = t.trim(); if (t.isEmpty()) 
-                       continue;
+                     t = t.trim(); 
+
+                     if (t.isEmpty()){ 
+                           continue;
+                     }
 
                     try { 
                            tour.add(Integer.parseInt(t)); 
@@ -292,9 +403,9 @@ import java.util.List;
             }
          } catch (IOException e) { 
             
-                  System.err.println("Error: " + e.getMessage()); 
+                  System.out.println("Error: " + e.getMessage()); 
         
-      }
+              }
         if (!tour.isEmpty() && !tour.get(0).equals(tour.get(tour.size()-1)))
               tour.add(tour.get(0));
                return tour;
@@ -329,7 +440,7 @@ import java.util.List;
                 }
              }
               if (nearest == null) {
-                    break;
+                     break;
               }
                 tour.add(nearest.id); 
                 visited.add(nearest.id);
@@ -395,6 +506,47 @@ import java.util.List;
                  return null;
     }
 
+    static void drawArrow(Graphics2D g2,
+                      double ax, double ay,
+                      double bx, double by,
+                      Color color) {
+
+    double dx = bx - ax;
+    double dy = by - ay;
+    double len = Math.sqrt(dx * dx + dy * dy);
+
+    if (len < 5) {
+          return;
+    }
+
+    dx /= len;
+    dy /= len;
+
+    double arrowPos = 0.65;
+    double arrowX = ax + dx * len * arrowPos;
+    double arrowY = ay + dy * len * arrowPos;
+
+    double arrowSize = 10;
+
+    double perpX = -dy;
+    double perpY = dx;
+
+    int[] xPoints = {
+            (int) (arrowX + dx * arrowSize),
+            (int) (arrowX + perpX * arrowSize * 0.5),
+            (int) (arrowX - perpX * arrowSize * 0.5)
+    };
+
+    int[] yPoints = {
+            (int) (arrowY + dy * arrowSize),
+            (int) (arrowY + perpY * arrowSize * 0.5),
+            (int) (arrowY - perpY * arrowSize * 0.5)
+       };
+
+        g2.setColor(color);
+        g2.fillPolygon(xPoints, yPoints, 3);
+     }
+
     static JLabel makeLabel(String text, Color color, boolean bold) {
           JLabel l = new JLabel(text);
           l.setForeground(color);
@@ -432,3 +584,4 @@ import java.util.List;
                 return cities;
      }
   }
+  
