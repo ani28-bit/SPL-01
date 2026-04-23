@@ -20,7 +20,8 @@ bool loadCitiesFromFile(const string& filename, City cities[], int &numCities) {
     ifstream file(filename);
 
     if (!file.is_open()) {
-        return false;
+
+            return false;
     }
 
     double x, y;
@@ -28,15 +29,20 @@ bool loadCitiesFromFile(const string& filename, City cities[], int &numCities) {
     numCities = 0;
 
     while (getline(file, line)) {
-        istringstream iss(line);
+         
+              istringstream iss(line);
 
-        int id; if (!(iss >> id >> x >> y)) {
-            continue;
+             int id; 
+
+        if (!(iss >> id >> x >> y)) {
+
+               continue;
         }
         cities[numCities] = City(numCities, x, y);
         numCities++;
 
         if (numCities >= MAX_CITIES) {
+
                break;
         }
     }
